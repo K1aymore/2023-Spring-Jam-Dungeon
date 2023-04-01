@@ -1,9 +1,14 @@
-[gd_scene load_steps=8 format=3 uid="uid://cvkbg4iiqcrqk"]
+[gd_scene load_steps=10 format=3 uid="uid://x1kw646s7q4j"]
 
+[ext_resource type="Script" path="res://Super.gd" id="1_61d0a"]
+[ext_resource type="Script" path="res://Level.gd" id="1_jqsnx"]
+[ext_resource type="Script" path="res://Game.gd" id="1_pcnrb"]
 [ext_resource type="Theme" uid="uid://dxbyj4ks8h1tj" path="res://new_theme.tres" id="1_v1hwd"]
 [ext_resource type="Texture2D" uid="uid://0plgdl6ql80a" path="res://icon.svg" id="2_tsp6m"]
+[ext_resource type="PackedScene" uid="uid://b855oaou05845" path="res://TileTurn.tscn" id="4_7d0wy"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_oad6b"]
+ground_bottom_color = Color(0.133333, 0.188235, 0.168627, 1)
 
 [sub_resource type="Sky" id="Sky_xu33g"]
 sky_material = SubResource("ProceduralSkyMaterial_oad6b")
@@ -12,21 +17,6 @@ sky_material = SubResource("ProceduralSkyMaterial_oad6b")
 background_mode = 2
 sky = SubResource("Sky_xu33g")
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_wla2w"]
-
-[sub_resource type="MeshLibrary" id="MeshLibrary_4fuhy"]
-item/0/name = ""
-item/0/mesh = SubResource("PlaneMesh_wla2w")
-item/0/mesh_transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
-item/0/shapes = []
-item/0/navigation_mesh_transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
-item/0/navigation_layers = 1
-item/1/name = ""
-item/1/mesh_transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
-item/1/shapes = []
-item/1/navigation_mesh_transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
-item/1/navigation_layers = 1
-
 [node name="Super" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -34,6 +24,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_61d0a")
 
 [node name="Game" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -46,21 +37,22 @@ theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
+script = ExtResource("1_pcnrb")
 
 [node name="Level" type="Node3D" parent="Game"]
+script = ExtResource("1_jqsnx")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="Game/Level"]
 environment = SubResource("Environment_mlbo2")
 
-[node name="GridMap" type="GridMap" parent="Game/Level"]
-mesh_library = SubResource("MeshLibrary_4fuhy")
-data = {
-"cells": PackedInt32Array(65532, 65535, 1, 65532, 65534, 1, 65533, 65534, 1, 65533, 65533, 1)
-}
-metadata/_editor_floor_ = Vector3(0, 0, 0)
+[node name="TileTurn" parent="Game/Level" instance=ExtResource("4_7d0wy")]
 
 [node name="Player" type="CharacterBody3D" parent="Game"]
-motion_mode = 1
+unique_name_in_owner = true
+
+[node name="RayCast3D" type="RayCast3D" parent="Game/Player"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+target_position = Vector3(0, -2.2, 0)
 
 [node name="VSplitContainer" type="VSplitContainer" parent="Game"]
 layout_mode = 2
@@ -79,9 +71,18 @@ size_flags_horizontal = 3
 stretch = true
 
 [node name="SubViewport" type="SubViewport" parent="Game/VSplitContainer/HSplitContainer/SubViewportContainer"]
+handle_input_locally = false
 size = Vector2i(869, 488)
+render_target_update_mode = 4
 
-[node name="Camera3D" type="Camera3D" parent="Game/VSplitContainer/HSplitContainer/SubViewportContainer/SubViewport"]
+[node name="PlayerCam" type="Camera3D" parent="Game/VSplitContainer/HSplitContainer/SubViewportContainer/SubViewport"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.9, 0)
+fov = 103.6
+
+[node name="Sprite3D" type="Sprite3D" parent="Game/VSplitContainer/HSplitContainer/SubViewportContainer/SubViewport/PlayerCam"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, -0.981441, 0)
+texture = ExtResource("2_tsp6m")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Game/VSplitContainer/HSplitContainer"]
 layout_mode = 2
@@ -101,7 +102,7 @@ split_offset = 200
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Game/VSplitContainer/HSplitContainer2/HSplitContainer/HBoxContainer"]
+[node name="Characters" type="GridContainer" parent="Game/VSplitContainer/HSplitContainer2/HSplitContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 
@@ -116,7 +117,55 @@ size_flags_horizontal = 3
 stretch = true
 
 [node name="SubViewport" type="SubViewport" parent="Game/VSplitContainer/HSplitContainer2/HSplitContainer/SubViewportContainer"]
+handle_input_locally = false
 size = Vector2i(360, 128)
+render_target_update_mode = 4
 
-[node name="Camera3D" type="Camera3D" parent="Game/VSplitContainer/HSplitContainer2/HSplitContainer/SubViewportContainer/SubViewport"]
-transform = Transform3D(1, 0, 0, 0, 0.928499, 0.371335, 0, -0.371335, 0.928499, 0, 1.45504, 0)
+[node name="MapCam" type="Camera3D" parent="Game/VSplitContainer/HSplitContainer2/HSplitContainer/SubViewportContainer/SubViewport"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 10, 0)
+projection = 1
+size = 15.0
+
+[node name="Menu" type="MarginContainer" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 25
+
+[node name="Options" type="TabContainer" parent="Menu"]
+visible = false
+layout_mode = 2
+theme = ExtResource("1_v1hwd")
+
+[node name="Movement" type="VBoxContainer" parent="Menu/Options"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Menu/Options/Movement"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 44
+theme_override_constants/margin_top = 42
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Menu/Options/Movement/MarginContainer"]
+layout_mode = 2
+
+[node name="SmoothTurning" type="CheckBox" parent="Menu/Options/Movement/MarginContainer/VBoxContainer"]
+layout_mode = 2
+button_pressed = true
+text = "Smooth Turning"
+
+[node name="SmoothMovement" type="CheckBox" parent="Menu/Options/Movement/MarginContainer/VBoxContainer"]
+layout_mode = 2
+button_pressed = true
+text = "Smooth Movement"
+
+[connection signal="toggled" from="Menu/Options/Movement/MarginContainer/VBoxContainer/SmoothTurning" to="." method="_on_smooth_turning_toggled"]
+[connection signal="toggled" from="Menu/Options/Movement/MarginContainer/VBoxContainer/SmoothMovement" to="." method="_on_smooth_movement_toggled"]
