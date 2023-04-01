@@ -1,7 +1,8 @@
-CharacterBody3D
-RayCast3D
-StaticBody3D
 CollisionShape3D
+RayCast3D
+Area3D
+CharacterBody3D
+StaticBody3D
 MarginContainer
 VBoxContainer
 CheckBox

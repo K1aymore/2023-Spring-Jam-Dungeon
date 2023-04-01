@@ -1,9 +1,10 @@
 2a60927148abd1d33b818b535e306557
-::res://::1680382894
-Game.gd::GDScript::-1::1680382323::0::1::::<>MarginContainer<>::
+::res://::1680389864
+Game.gd::GDScript::-1::1680389309::0::1::::<>MarginContainer<>::
 icon.svg::CompressedTexture2D::1786365534938816590::1680287261::1680370078::1::::<><>::
 Level.gd::GDScript::-1::1680372315::0::1::::<>Node3D<>::
 new_theme.tres::Theme::8777144651967087871::1680381949::0::1::::<><>::
-Super.gd::GDScript::-1::1680382230::0::1::::<>Control<>::
-super.tscn::PackedScene::1668665357130883299::1680382639::0::1::::<><>::res://Super.gd<>res://Level.gd<>res://Game.gd<>uid://dxbyj4ks8h1tj<>uid://0plgdl6ql80a<>uid://b855oaou05845
-TileTurn.tscn::PackedScene::4766430389838222460::1680382896::0::1::::<><>::uid://0plgdl6ql80a
+Player.gd::GDScript::-1::1680389760::0::1::::<>CharacterBody3D<>::
+Super.gd::GDScript::-1::1680388970::0::1::::<>Control<>::
+Super.tscn::PackedScene::1668665357130883299::1680389805::0::1::::<><>::res://Super.gd<>res://Level.gd<>res://Game.gd<>uid://dxbyj4ks8h1tj<>uid://0plgdl6ql80a<>uid://b855oaou05845<>res://Player.gd
+TileTurn.tscn::PackedScene::4766430389838222460::1680389690::0::1::::<><>::uid://0plgdl6ql80a

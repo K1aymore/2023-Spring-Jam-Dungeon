@@ -1,7 +1,7 @@
 extends Control
 
-var instantTurn := true
-var instantMove := true
+var instantTurn := false
+var instantMove := false
 
 var turnSpeed := 10
 var moveSpeed := 10

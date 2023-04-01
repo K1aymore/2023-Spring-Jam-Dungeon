@@ -1,7 +1,5 @@
-res://super.tscn
-res://new_theme.tres
-res://Level.gd
-res://Game.gd
-res://Super.gd
-res://TileTurn.tscn
 res://Super.tscn
+res://new_theme.tres
+res://Game.gd
+res://Player.gd
+res://TileTurn.tscn
