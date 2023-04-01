@@ -1,0 +1,122 @@
+[gd_scene load_steps=8 format=3 uid="uid://cvkbg4iiqcrqk"]
+
+[ext_resource type="Theme" uid="uid://dxbyj4ks8h1tj" path="res://new_theme.tres" id="1_v1hwd"]
+[ext_resource type="Texture2D" uid="uid://0plgdl6ql80a" path="res://icon.svg" id="2_tsp6m"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_oad6b"]
+
+[sub_resource type="Sky" id="Sky_xu33g"]
+sky_material = SubResource("ProceduralSkyMaterial_oad6b")
+
+[sub_resource type="Environment" id="Environment_mlbo2"]
+background_mode = 2
+sky = SubResource("Sky_xu33g")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_wla2w"]
+
+[sub_resource type="MeshLibrary" id="MeshLibrary_4fuhy"]
+item/0/name = ""
+item/0/mesh = SubResource("PlaneMesh_wla2w")
+item/0/mesh_transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+item/0/shapes = []
+item/0/navigation_mesh_transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+item/0/navigation_layers = 1
+item/1/name = ""
+item/1/mesh_transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+item/1/shapes = []
+item/1/navigation_mesh_transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+item/1/navigation_layers = 1
+
+[node name="Super" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Game" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="Level" type="Node3D" parent="Game"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Game/Level"]
+environment = SubResource("Environment_mlbo2")
+
+[node name="GridMap" type="GridMap" parent="Game/Level"]
+mesh_library = SubResource("MeshLibrary_4fuhy")
+data = {
+"cells": PackedInt32Array(65532, 65535, 1, 65532, 65534, 1, 65533, 65534, 1, 65533, 65533, 1)
+}
+metadata/_editor_floor_ = Vector3(0, 0, 0)
+
+[node name="Player" type="CharacterBody3D" parent="Game"]
+motion_mode = 1
+
+[node name="VSplitContainer" type="VSplitContainer" parent="Game"]
+layout_mode = 2
+theme = ExtResource("1_v1hwd")
+split_offset = 194
+
+[node name="HSplitContainer" type="HSplitContainer" parent="Game/VSplitContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("1_v1hwd")
+split_offset = 309
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="Game/VSplitContainer/HSplitContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="Game/VSplitContainer/HSplitContainer/SubViewportContainer"]
+size = Vector2i(869, 488)
+
+[node name="Camera3D" type="Camera3D" parent="Game/VSplitContainer/HSplitContainer/SubViewportContainer/SubViewport"]
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Game/VSplitContainer/HSplitContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HSplitContainer2" type="HSplitContainer" parent="Game/VSplitContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("1_v1hwd")
+
+[node name="HSplitContainer" type="HSplitContainer" parent="Game/VSplitContainer/HSplitContainer2"]
+layout_mode = 2
+theme = ExtResource("1_v1hwd")
+split_offset = 200
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Game/VSplitContainer/HSplitContainer2/HSplitContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Game/VSplitContainer/HSplitContainer2/HSplitContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TextureRect" type="TextureRect" parent="Game/VSplitContainer/HSplitContainer2/HSplitContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("2_tsp6m")
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="Game/VSplitContainer/HSplitContainer2/HSplitContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="Game/VSplitContainer/HSplitContainer2/HSplitContainer/SubViewportContainer"]
+size = Vector2i(360, 128)
+
+[node name="Camera3D" type="Camera3D" parent="Game/VSplitContainer/HSplitContainer2/HSplitContainer/SubViewportContainer/SubViewport"]
+transform = Transform3D(1, 0, 0, 0, 0.928499, 0.371335, 0, -0.371335, 0.928499, 0, 1.45504, 0)

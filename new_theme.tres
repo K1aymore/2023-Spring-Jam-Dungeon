@@ -1,0 +1,5 @@
+[gd_resource type="Theme" format=3 uid="uid://dxbyj4ks8h1tj"]
+
+[resource]
+/constants/Autohide = 1
+/constants/Separation = 9

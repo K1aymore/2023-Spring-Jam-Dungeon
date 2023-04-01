@@ -1,0 +1,14 @@
+GridMap
+CharacterBody3D
+WorldEnvironment
+DirectionalLight3D
+TextureRect
+HBoxContainer
+Camera3D
+SubViewport
+SubViewportContainer
+HSplitContainer
+Node3D
+MarginContainer
+Control
+VSplitContainer
