@@ -1,12 +1,13 @@
-[gd_scene load_steps=12 format=3 uid="uid://x1kw646s7q4j"]
+[gd_scene load_steps=13 format=3 uid="uid://c0a5mciw5a8so"]
 
-[ext_resource type="Script" path="res://Super.gd" id="1_61d0a"]
-[ext_resource type="Script" path="res://Level.gd" id="1_jqsnx"]
-[ext_resource type="Script" path="res://Game.gd" id="1_pcnrb"]
+[ext_resource type="Script" path="res://Scripts/Super.gd" id="1_ipsc5"]
 [ext_resource type="Theme" uid="uid://dxbyj4ks8h1tj" path="res://new_theme.tres" id="1_v1hwd"]
+[ext_resource type="Script" path="res://Scripts/Game.gd" id="2_4eqqn"]
 [ext_resource type="Texture2D" uid="uid://0plgdl6ql80a" path="res://icon.svg" id="2_tsp6m"]
-[ext_resource type="PackedScene" uid="uid://b855oaou05845" path="res://TileTurn.tscn" id="4_7d0wy"]
-[ext_resource type="Script" path="res://Player.gd" id="5_8urhi"]
+[ext_resource type="Script" path="res://Scripts/Level.gd" id="3_6b63m"]
+[ext_resource type="PackedScene" uid="uid://b855oaou05845" path="res://Tiles/TileTurn.tscn" id="4_7d0wy"]
+[ext_resource type="Script" path="res://Scripts/Player.gd" id="5_kbg67"]
+[ext_resource type="Script" path="res://Scripts/Menu.gd" id="8_ah80e"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_oad6b"]
 ground_bottom_color = Color(0.133333, 0.188235, 0.168627, 1)
@@ -21,15 +22,17 @@ sky = SubResource("Sky_xu33g")
 [sub_resource type="BoxShape3D" id="BoxShape3D_vii7j"]
 
 [node name="Super" type="Control"]
+process_mode = 3
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_61d0a")
+script = ExtResource("1_ipsc5")
 
 [node name="Game" type="MarginContainer" parent="."]
+process_mode = 1
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -40,10 +43,10 @@ theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
-script = ExtResource("1_pcnrb")
+script = ExtResource("2_4eqqn")
 
 [node name="Level" type="Node3D" parent="Game"]
-script = ExtResource("1_jqsnx")
+script = ExtResource("3_6b63m")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="Game/Level"]
 environment = SubResource("Environment_mlbo2")
@@ -54,7 +57,7 @@ environment = SubResource("Environment_mlbo2")
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 motion_mode = 1
-script = ExtResource("5_8urhi")
+script = ExtResource("5_kbg67")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Game/Player"]
 shape = SubResource("BoxShape3D_vii7j")
@@ -150,7 +153,7 @@ projection = 1
 size = 15.0
 
 [node name="Menu" type="MarginContainer" parent="."]
-visible = false
+process_mode = 3
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -161,6 +164,31 @@ theme_override_constants/margin_left = 20
 theme_override_constants/margin_top = 20
 theme_override_constants/margin_right = 20
 theme_override_constants/margin_bottom = 25
+script = ExtResource("8_ah80e")
+
+[node name="Main" type="MarginContainer" parent="Menu"]
+visible = false
+layout_mode = 2
+theme_override_constants/margin_left = 137
+theme_override_constants/margin_top = 87
+theme_override_constants/margin_bottom = 30
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Menu/Main"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+
+[node name="PlayButton" type="Button" parent="Menu/Main/VBoxContainer"]
+layout_mode = 2
+text = "Play"
+
+[node name="OptionsButton" type="Button" parent="Menu/Main/VBoxContainer"]
+layout_mode = 2
+text = "Options"
+
+[node name="QuitButton" type="Button" parent="Menu/Main/VBoxContainer"]
+layout_mode = 2
+text = "Quit"
 
 [node name="Options" type="TabContainer" parent="Menu"]
 visible = false
@@ -189,5 +217,8 @@ layout_mode = 2
 button_pressed = true
 text = "Smooth Movement"
 
+[connection signal="pressed" from="Menu/Main/VBoxContainer/PlayButton" to="Menu" method="_on_play_button_pressed"]
+[connection signal="pressed" from="Menu/Main/VBoxContainer/OptionsButton" to="Menu" method="_on_options_button_pressed"]
+[connection signal="pressed" from="Menu/Main/VBoxContainer/QuitButton" to="Menu" method="_on_quit_button_pressed"]
 [connection signal="toggled" from="Menu/Options/Movement/MarginContainer/VBoxContainer/SmoothTurning" to="." method="_on_smooth_turning_toggled"]
 [connection signal="toggled" from="Menu/Options/Movement/MarginContainer/VBoxContainer/SmoothMovement" to="." method="_on_smooth_movement_toggled"]

@@ -51,6 +51,7 @@ func move():
 		movement.z = temp
 	
 	move_and_collide(movement)
+	position = snapped(position, Vector3(4,2,4))
 
 
 func calc_forw_move() -> Vector3:
