@@ -1,0 +1,29 @@
+[gd_scene load_steps=3 format=3 uid="uid://br47teaywivqx"]
+
+[ext_resource type="Texture2D" uid="uid://dwa8oe4mk5j37" path="res://Textures/ronksSeqTexture.tres" id="2_fa7sa"]
+[ext_resource type="PackedScene" uid="uid://qk8aygucikxb" path="res://wall.tscn" id="2_oxq4h"]
+
+[node name="TileEnd" type="StaticBody3D"]
+
+[node name="Floor" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+visible = false
+texture = ExtResource("2_fa7sa")
+region_enabled = true
+region_rect = Rect2(0, 0, 400, 400)
+
+[node name="Roof" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 4, 0)
+visible = false
+texture = ExtResource("2_fa7sa")
+region_enabled = true
+region_rect = Rect2(0, 0, 400, 400)
+
+[node name="Wall1" parent="." instance=ExtResource("2_oxq4h")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2, 2, 0)
+
+[node name="Wall2" parent="." instance=ExtResource("2_oxq4h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -2)
+
+[node name="Wall3" parent="." instance=ExtResource("2_oxq4h")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 2, 2, 0)

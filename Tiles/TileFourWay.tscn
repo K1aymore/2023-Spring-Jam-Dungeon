@@ -1,0 +1,19 @@
+[gd_scene load_steps=2 format=3 uid="uid://ckju8lkw6ryfn"]
+
+[ext_resource type="Texture2D" uid="uid://dwa8oe4mk5j37" path="res://Textures/ronksSeqTexture.tres" id="2_guwgp"]
+
+[node name="TileTurn" type="StaticBody3D"]
+
+[node name="Floor" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+visible = false
+texture = ExtResource("2_guwgp")
+region_enabled = true
+region_rect = Rect2(0, 0, 400, 400)
+
+[node name="Roof" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 4, 0)
+visible = false
+texture = ExtResource("2_guwgp")
+region_enabled = true
+region_rect = Rect2(0, 0, 400, 400)

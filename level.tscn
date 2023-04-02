@@ -1,0 +1,69 @@
+[gd_scene load_steps=10 format=3 uid="uid://ctiy7j0il516a"]
+
+[ext_resource type="Script" path="res://Scripts/Level.gd" id="1_v6yfd"]
+[ext_resource type="Texture2D" uid="uid://dwa8oe4mk5j37" path="res://Textures/ronksSeqTexture.tres" id="2_x8s27"]
+[ext_resource type="PackedScene" uid="uid://b855oaou05845" path="res://Tiles/TileTurn.tscn" id="3_ef5gl"]
+[ext_resource type="PackedScene" uid="uid://c1nmr81fuxpd3" path="res://Tiles/TileT.tscn" id="4_3jbs3"]
+[ext_resource type="PackedScene" uid="uid://br47teaywivqx" path="res://Tiles/TileEnd.tscn" id="5_strd0"]
+[ext_resource type="PackedScene" uid="uid://ckju8lkw6ryfn" path="res://Tiles/TileFourWay.tscn" id="6_xf1u7"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_oad6b"]
+ground_bottom_color = Color(0.133333, 0.188235, 0.168627, 1)
+
+[sub_resource type="Sky" id="Sky_xu33g"]
+sky_material = SubResource("ProceduralSkyMaterial_oad6b")
+
+[sub_resource type="Environment" id="Environment_mlbo2"]
+background_mode = 2
+sky = SubResource("Sky_xu33g")
+
+[node name="Level" type="Node3D"]
+script = ExtResource("1_v6yfd")
+
+[node name="Floor" type="Sprite3D" parent="."]
+axis = 1
+texture = ExtResource("2_x8s27")
+region_enabled = true
+region_rect = Rect2(0, 0, 2000, 2000)
+
+[node name="Roof" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0)
+axis = 1
+texture = ExtResource("2_x8s27")
+region_enabled = true
+region_rect = Rect2(0, 0, 2000, 2000)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_mlbo2")
+
+[node name="TileTurn" parent="." instance=ExtResource("3_ef5gl")]
+
+[node name="TileTurn2" parent="." instance=ExtResource("4_3jbs3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 0)
+
+[node name="TileEnd" parent="." instance=ExtResource("5_strd0")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -8, 0, 0)
+
+[node name="TileTurn3" parent="." instance=ExtResource("3_ef5gl")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -4, 0, 4)
+
+[node name="TileTurn4" parent="." instance=ExtResource("3_ef5gl")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -8, 0, 4)
+
+[node name="TileEnd2" parent="." instance=ExtResource("5_strd0")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -8, 0, 8)
+
+[node name="TileTurn5" parent="." instance=ExtResource("3_ef5gl")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 4)
+
+[node name="TileTurn6" parent="." instance=ExtResource("6_xf1u7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 4)
+
+[node name="TileEnd3" parent="." instance=ExtResource("5_strd0")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 4, 0, 8)
+
+[node name="TileEnd4" parent="." instance=ExtResource("5_strd0")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 8, 0, 4)
+
+[node name="TileEnd5" parent="." instance=ExtResource("5_strd0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 0)
