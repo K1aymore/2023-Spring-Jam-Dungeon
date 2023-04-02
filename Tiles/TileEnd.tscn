@@ -1,7 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://br47teaywivqx"]
+[gd_scene load_steps=3 format=3]
 
 [ext_resource type="Texture2D" uid="uid://dwa8oe4mk5j37" path="res://Textures/ronksSeqTexture.tres" id="2_fa7sa"]
-[ext_resource type="PackedScene" uid="uid://qk8aygucikxb" path="res://wall.tscn" id="2_oxq4h"]
+[ext_resource type="PackedScene" uid="uid://qk8aygucikxb" path="res://Scenes/wall.tscn" id="2_oxq4h"]
 
 [node name="TileEnd" type="StaticBody3D"]
 

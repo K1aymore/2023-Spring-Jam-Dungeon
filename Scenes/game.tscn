@@ -1,0 +1,99 @@
+[gd_scene load_steps=6 format=3 uid="uid://rnc4uk4rths3"]
+
+[ext_resource type="Script" path="res://Scripts/Game.gd" id="1_j0cq4"]
+[ext_resource type="PackedScene" uid="uid://ctiy7j0il516a" path="res://Scenes/level.tscn" id="2_wqby5"]
+[ext_resource type="PackedScene" uid="uid://c3axriqimy1wf" path="res://Scenes/player.tscn" id="3_av2ii"]
+[ext_resource type="Theme" uid="uid://dxbyj4ks8h1tj" path="res://new_theme.tres" id="4_ho0vs"]
+[ext_resource type="Texture2D" uid="uid://0plgdl6ql80a" path="res://icon.svg" id="5_4hqqr"]
+
+[node name="Game" type="MarginContainer"]
+process_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+script = ExtResource("1_j0cq4")
+
+[node name="Level" parent="." instance=ExtResource("2_wqby5")]
+
+[node name="Player" parent="." instance=ExtResource("3_av2ii")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+
+[node name="VSplitContainer" type="VSplitContainer" parent="."]
+layout_mode = 2
+theme = ExtResource("4_ho0vs")
+split_offset = 194
+
+[node name="HSplitContainer" type="HSplitContainer" parent="VSplitContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("4_ho0vs")
+split_offset = 309
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="VSplitContainer/HSplitContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="VSplitContainer/HSplitContainer/SubViewportContainer"]
+handle_input_locally = false
+size = Vector2i(869, 488)
+render_target_update_mode = 4
+
+[node name="PlayerCam" type="Camera3D" parent="VSplitContainer/HSplitContainer/SubViewportContainer/SubViewport"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+current = true
+fov = 100.0
+
+[node name="Sprite3D" type="Sprite3D" parent="VSplitContainer/HSplitContainer/SubViewportContainer/SubViewport/PlayerCam"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 2.01856, -1.31134e-07)
+texture = ExtResource("5_4hqqr")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VSplitContainer/HSplitContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HSplitContainer2" type="HSplitContainer" parent="VSplitContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("4_ho0vs")
+
+[node name="HSplitContainer" type="HSplitContainer" parent="VSplitContainer/HSplitContainer2"]
+layout_mode = 2
+theme = ExtResource("4_ho0vs")
+split_offset = 200
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VSplitContainer/HSplitContainer2/HSplitContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Characters" type="GridContainer" parent="VSplitContainer/HSplitContainer2/HSplitContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TextureRect" type="TextureRect" parent="VSplitContainer/HSplitContainer2/HSplitContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("5_4hqqr")
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="VSplitContainer/HSplitContainer2/HSplitContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="VSplitContainer/HSplitContainer2/HSplitContainer/SubViewportContainer"]
+handle_input_locally = false
+size = Vector2i(360, 128)
+render_target_update_mode = 4
+
+[node name="MapCam" type="Camera3D" parent="VSplitContainer/HSplitContainer2/HSplitContainer/SubViewportContainer/SubViewport"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 10, 0)
+projection = 1
+size = 15.0

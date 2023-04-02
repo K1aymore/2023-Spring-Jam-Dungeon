@@ -1,0 +1,74 @@
+[gd_scene load_steps=3 format=3 uid="uid://b3scnladirb5x"]
+
+[ext_resource type="Script" path="res://Scripts/Menu.gd" id="1_q2j1x"]
+[ext_resource type="Theme" uid="uid://dxbyj4ks8h1tj" path="res://new_theme.tres" id="2_4ncmn"]
+
+[node name="Menu" type="MarginContainer"]
+process_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 25
+script = ExtResource("1_q2j1x")
+
+[node name="Main" type="MarginContainer" parent="."]
+visible = false
+layout_mode = 2
+theme_override_constants/margin_left = 137
+theme_override_constants/margin_top = 87
+theme_override_constants/margin_bottom = 30
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Main"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+
+[node name="PlayButton" type="Button" parent="Main/VBoxContainer"]
+layout_mode = 2
+text = "Play"
+
+[node name="OptionsButton" type="Button" parent="Main/VBoxContainer"]
+layout_mode = 2
+text = "Options"
+
+[node name="QuitButton" type="Button" parent="Main/VBoxContainer"]
+layout_mode = 2
+text = "Quit"
+
+[node name="Options" type="TabContainer" parent="."]
+visible = false
+layout_mode = 2
+theme = ExtResource("2_4ncmn")
+
+[node name="Movement" type="VBoxContainer" parent="Options"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Options/Movement"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 44
+theme_override_constants/margin_top = 42
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Options/Movement/MarginContainer"]
+layout_mode = 2
+
+[node name="SmoothTurning" type="CheckBox" parent="Options/Movement/MarginContainer/VBoxContainer"]
+layout_mode = 2
+button_pressed = true
+text = "Smooth Turning"
+
+[node name="SmoothMovement" type="CheckBox" parent="Options/Movement/MarginContainer/VBoxContainer"]
+layout_mode = 2
+button_pressed = true
+text = "Smooth Movement"
+
+[connection signal="pressed" from="Main/VBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="Main/VBoxContainer/OptionsButton" to="." method="_on_options_button_pressed"]
+[connection signal="pressed" from="Main/VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]
+[connection signal="toggled" from="Options/Movement/MarginContainer/VBoxContainer/SmoothTurning" to="." method="_on_smooth_turning_toggled"]
+[connection signal="toggled" from="Options/Movement/MarginContainer/VBoxContainer/SmoothMovement" to="." method="_on_smooth_movement_toggled"]

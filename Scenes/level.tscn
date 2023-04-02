@@ -2,9 +2,9 @@
 
 [ext_resource type="Script" path="res://Scripts/Level.gd" id="1_v6yfd"]
 [ext_resource type="Texture2D" uid="uid://dwa8oe4mk5j37" path="res://Textures/ronksSeqTexture.tres" id="2_x8s27"]
-[ext_resource type="PackedScene" uid="uid://b855oaou05845" path="res://Tiles/TileTurn.tscn" id="3_ef5gl"]
-[ext_resource type="PackedScene" uid="uid://c1nmr81fuxpd3" path="res://Tiles/TileT.tscn" id="4_3jbs3"]
-[ext_resource type="PackedScene" uid="uid://br47teaywivqx" path="res://Tiles/TileEnd.tscn" id="5_strd0"]
+[ext_resource type="PackedScene" path="res://Tiles/TileTurn.tscn" id="3_ef5gl"]
+[ext_resource type="PackedScene" path="res://Tiles/TileT.tscn" id="4_3jbs3"]
+[ext_resource type="PackedScene" path="res://Tiles/TileEnd.tscn" id="5_strd0"]
 [ext_resource type="PackedScene" uid="uid://ckju8lkw6ryfn" path="res://Tiles/TileFourWay.tscn" id="6_xf1u7"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_oad6b"]

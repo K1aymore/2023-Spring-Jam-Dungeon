@@ -1,7 +1,7 @@
 extends MarginContainer
 
-@onready var player : CharacterBody3D = %Player
-@onready var playerCam : Camera3D = %PlayerCam
+@onready var player : CharacterBody3D = $Player
+@onready var playerCam : Camera3D = get_node("%PlayerCam")
 
 var deltaG : float
 

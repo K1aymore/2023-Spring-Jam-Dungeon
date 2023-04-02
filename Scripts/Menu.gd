@@ -46,3 +46,11 @@ func _on_options_button_pressed():
 
 func _on_quit_button_pressed():
 	get_tree().quit()
+
+
+func _on_smooth_turning_toggled(button_pressed):
+	get_parent().instantTurn = !button_pressed
+
+
+func _on_smooth_movement_toggled(button_pressed):
+	get_parent().instantMove = !button_pressed

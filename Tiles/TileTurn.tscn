@@ -1,29 +1,17 @@
-[gd_scene load_steps=3 format=3 uid="uid://b855oaou05845"]
+[gd_scene load_steps=3 format=3]
 
+[ext_resource type="PackedScene" uid="uid://qk8aygucikxb" path="res://Scenes/wall.tscn" id="1_4m5qh"]
 [ext_resource type="Texture2D" uid="uid://0plgdl6ql80a" path="res://icon.svg" id="1_5vixo"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_y73v3"]
-size = Vector3(3.913, 3.992, 0.233)
-
 [node name="TileTurn" type="StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4)
 
-[node name="Wall1" type="CollisionShape3D" parent="."]
+[node name="Wall1" parent="." instance=ExtResource("1_4m5qh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -2)
-shape = SubResource("BoxShape3D_y73v3")
 
-[node name="Sprite3D" type="Sprite3D" parent="Wall1"]
-transform = Transform3D(3.141, 0, 0, 0, 3.141, 0, 0, 0, 3.141, 0, 0, 0)
-texture = ExtResource("1_5vixo")
-
-[node name="Wall2" type="CollisionShape3D" parent="."]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 2, 2, 0)
-shape = SubResource("BoxShape3D_y73v3")
-
-[node name="Sprite3D" type="Sprite3D" parent="Wall2"]
-transform = Transform3D(3.141, 0, 0, 0, 3.141, 0, 0, 0, 3.141, 0, 0, 0)
-texture = ExtResource("1_5vixo")
+[node name="Wall2" parent="." instance=ExtResource("1_4m5qh")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 2, 2, 0)
 
 [node name="Floor" type="Sprite3D" parent="."]
 transform = Transform3D(3.141, 0, 0, 0, -1.37297e-07, 3.141, 0, -3.141, -1.37297e-07, 0, 0, 0)
+visible = false
 texture = ExtResource("1_5vixo")

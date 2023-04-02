@@ -1,0 +1,28 @@
+[gd_scene load_steps=3 format=3 uid="uid://c3axriqimy1wf"]
+
+[ext_resource type="Script" path="res://Scripts/Player.gd" id="1_14pra"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_vii7j"]
+
+[node name="Player" type="CharacterBody3D"]
+motion_mode = 1
+script = ExtResource("1_14pra")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_vii7j")
+
+[node name="RayForward" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+target_position = Vector3(0, -2.2, 0)
+
+[node name="RayLeft" type="RayCast3D" parent="."]
+transform = Transform3D(-4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, -4.37114e-08, 1.91069e-15, 0, 0, 0)
+target_position = Vector3(0, -2.2, 0)
+
+[node name="RayBack" type="RayCast3D" parent="."]
+transform = Transform3D(-1, -8.74228e-08, 3.82137e-15, 0, -4.37114e-08, -1, 8.74228e-08, -1, 4.37114e-08, 0, 0, 0)
+target_position = Vector3(0, -2.2, 0)
+
+[node name="RayRight" type="RayCast3D" parent="."]
+transform = Transform3D(1.19249e-08, -1, 4.37114e-08, 0, -4.37114e-08, -1, 1, 1.19249e-08, -5.21253e-16, 0, 0, 0)
+target_position = Vector3(0, -2.2, 0)

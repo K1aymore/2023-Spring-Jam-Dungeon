@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="2023 Spring Jam Dungeon"
-run/main_scene="res://Super.tscn"
+run/main_scene="res://Scenes/super.tscn"
 config/features=PackedStringArray("4.0", "GL Compatibility")
 config/icon="res://icon.svg"
 
