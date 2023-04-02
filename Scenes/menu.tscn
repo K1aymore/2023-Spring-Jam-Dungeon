@@ -17,7 +17,6 @@ theme_override_constants/margin_bottom = 25
 script = ExtResource("1_q2j1x")
 
 [node name="Main" type="MarginContainer" parent="."]
-visible = false
 layout_mode = 2
 theme_override_constants/margin_left = 137
 theme_override_constants/margin_top = 87

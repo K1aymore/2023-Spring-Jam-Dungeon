@@ -21,10 +21,4 @@ func _process(delta):
 
 func play():
 	get_tree().paused = false
-
-
-func _on_smooth_turning_toggled(button_pressed):
-	instantTurn = !button_pressed
-
-func _on_smooth_movement_toggled(button_pressed):
-	instantMove = !button_pressed
+	$Menu.setMode($Menu.Mode.HIDDEN)

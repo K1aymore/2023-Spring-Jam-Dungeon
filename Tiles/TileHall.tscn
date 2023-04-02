@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3]
+[gd_scene load_steps=3 format=3 uid="uid://dgtfj1neh8h1w"]
 
 [ext_resource type="PackedScene" uid="uid://qk8aygucikxb" path="res://Scenes/wall.tscn" id="1_vf7c6"]
 [ext_resource type="Texture2D" uid="uid://dwa8oe4mk5j37" path="res://Textures/ronksSeqTexture.tres" id="2_fa7sa"]

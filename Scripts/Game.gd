@@ -10,7 +10,11 @@ const MAPCAM_HEIGHT = 10
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	print(playerCam)
+	var startPos = $Level.startTile.position
+	startPos.y += 2
+	player.position = startPos
+	player.rotation.y = (3*PI)/2
+	playerCam.transform = player.transform
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
