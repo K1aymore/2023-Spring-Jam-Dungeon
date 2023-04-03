@@ -2,27 +2,26 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://4o0njkb2g0vg"
-path.s3tc="res://.godot/imported/ronksseq96.png-4b94a952736fe30e18d7d556960303b3.s3tc.ctex"
+uid="uid://dj0iny2bl1sat"
+path="res://.godot/imported/roof.png-888c50de0da91d755d4c80629f7bdd16.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
-source_file="res://Textures/ronksseq96.png"
-dest_files=["res://.godot/imported/ronksseq96.png-4b94a952736fe30e18d7d556960303b3.s3tc.ctex"]
+source_file="res://Textures/roof.png"
+dest_files=["res://.godot/imported/roof.png-888c50de0da91d755d4c80629f7bdd16.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
 compress/normal_map=0
 compress/channel_pack=0
-mipmaps/generate=true
+mipmaps/generate=false
 mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""
@@ -32,4 +31,4 @@ process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
-detect_3d/compress_to=0
+detect_3d/compress_to=1

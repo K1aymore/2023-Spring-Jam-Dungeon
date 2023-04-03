@@ -1,7 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://ctiy7j0il516a"]
+[gd_scene load_steps=7 format=3 uid="uid://brxt736rcvqo6"]
 
 [ext_resource type="Script" path="res://Scripts/Level.gd" id="1_v6yfd"]
-[ext_resource type="Texture2D" uid="uid://dwa8oe4mk5j37" path="res://Textures/ronksSeqTexture.tres" id="2_x8s27"]
+[ext_resource type="Texture2D" uid="uid://dxhgywcav7ad8" path="res://Textures/floor.png" id="2_c3s3j"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_vusah"]
+load_path = "res://.godot/imported/ronksseq96.png-4b94a952736fe30e18d7d556960303b3.s3tc.ctex"
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_oad6b"]
 ground_bottom_color = Color(0.133333, 0.188235, 0.168627, 1)
@@ -16,17 +19,17 @@ sky = SubResource("Sky_xu33g")
 [node name="Level" type="Node3D"]
 script = ExtResource("1_v6yfd")
 
-[node name="Floor" type="Sprite3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)
-axis = 1
-texture = ExtResource("2_x8s27")
-region_enabled = true
-region_rect = Rect2(0, 0, 20000, 20000)
-
 [node name="Roof" type="Sprite3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 2)
 axis = 1
-texture = ExtResource("2_x8s27")
+texture = SubResource("CompressedTexture2D_vusah")
+region_enabled = true
+region_rect = Rect2(0, 0, 20000, 20000)
+
+[node name="Floor" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)
+axis = 1
+texture = ExtResource("2_c3s3j")
 region_enabled = true
 region_rect = Rect2(0, 0, 20000, 20000)
 

@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://qk8aygucikxb"]
 
-[ext_resource type="Texture2D" uid="uid://cowgtgqsos78u" path="res://Textures/ronksTexture.tres" id="1_leecj"]
+[ext_resource type="Texture2D" uid="uid://cq72f4a7xele5" path="res://Textures/wall.png" id="1_xt288"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_y73v3"]
 size = Vector3(4, 3.992, 0.233)
@@ -11,6 +11,6 @@ shape = SubResource("BoxShape3D_y73v3")
 [node name="Sprite3D" type="Sprite3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.001)
 transparent = false
-texture = ExtResource("1_leecj")
+texture = ExtResource("1_xt288")
 region_enabled = true
 region_rect = Rect2(0, 0, 400, 400)
