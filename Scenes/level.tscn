@@ -17,17 +17,18 @@ sky = SubResource("Sky_xu33g")
 script = ExtResource("1_v6yfd")
 
 [node name="Floor" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)
 axis = 1
 texture = ExtResource("2_x8s27")
 region_enabled = true
-region_rect = Rect2(0, 0, 2000, 2000)
+region_rect = Rect2(0, 0, 20000, 20000)
 
 [node name="Roof" type="Sprite3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 2)
 axis = 1
 texture = ExtResource("2_x8s27")
 region_enabled = true
-region_rect = Rect2(0, 0, 2000, 2000)
+region_rect = Rect2(0, 0, 20000, 20000)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_mlbo2")

@@ -16,7 +16,8 @@ enum Type {
 	LEFT,
 	RIGHT,
 	FOUR,
-	START
+	START,
+	EMPTY
 }
 
 var type : Type
@@ -29,7 +30,36 @@ var back = Vector3i(-2, 0, 0)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass
+	buildWalls()
+
+
+func buildWalls():
+	match type:
+		Type.END:
+			addWall(front)
+			addWall(left)
+			addWall(right)
+		Type.HALL:
+			addWall(left)
+			addWall(right)
+		Type.T:
+			addWall(front)
+		Type.LEFT:
+			addWall(front)
+			addWall(right)
+		Type.RIGHT:
+			addWall(front)
+			addWall(left)
+		Type.FOUR:
+			pass
+		Type.START:
+			addWall(back)
+			addWall(left)
+			addWall(right)
+		Type.EMPTY:
+			pass
+
+
 
 
 func setType(toset : Type):
@@ -37,32 +67,22 @@ func setType(toset : Type):
 	
 	match type:
 		Type.END:
-			addWall(front)
-			addWall(left)
-			addWall(right)
 			maxTiles = 0
 			tileOffsets = []
 			tileRotations = []
 		Type.HALL:
-			addWall(left)
-			addWall(right)
 			maxTiles = 1
 			tileOffsets = [ Vector3i(front*2) ]
 			tileRotations = [ 0 ]
 		Type.T:
-			addWall(front)
 			maxTiles = 2
 			tileOffsets = [ Vector3i(left*2), Vector3i(right*2) ]
 			tileRotations = [ PI/2, (3*PI)/2 ]
 		Type.LEFT:
-			addWall(front)
-			addWall(right)
 			maxTiles = 1
 			tileOffsets = [ Vector3i(left*2) ]
 			tileRotations = [ PI/2, (3*PI)/2 ]
 		Type.RIGHT:
-			addWall(front)
-			addWall(left)
 			maxTiles = 1
 			tileOffsets = [ Vector3i(right*2) ]
 			tileRotations = [ (3*PI)/2 ]
@@ -71,12 +91,13 @@ func setType(toset : Type):
 			tileOffsets = [ Vector3i(left*2), Vector3i(front*2), Vector3i(right*2) ]
 			tileRotations = [ PI/2, 0, (3*PI)/2 ]
 		Type.START:
-			addWall(back)
-			addWall(left)
-			addWall(right)
 			maxTiles = 1
 			tileOffsets = [ Vector3i(front*2) ]
 			tileRotations = [ 0 ]
+		Type.EMPTY:
+			maxTiles = 0
+			tileOffsets = []
+			tileRotations = []
 
 
 
@@ -94,10 +115,22 @@ func addWall(pos : Vector3i):
 
 func connectTile(tile : Tile):
 	var index := tiles.size()
+	var tileOffset = Vector3(tileOffsets[index]).rotated(Vector3.UP, self.rotation.y)
 	
 	tiles.append(tile)
 	
-	var tileOffset = Vector3(tileOffsets[index]).rotated(Vector3.UP, self.rotation.y)
-	
 	tile.position = self.position + tileOffset
 	tile.rotation.y = self.rotation.y + tileRotations[index]
+
+
+func nextPos() -> Vector3:
+	var index := tiles.size()
+	var tileOffset = Vector3(tileOffsets[index]).rotated(Vector3.UP, self.rotation.y)
+	
+	return self.position + tileOffset
+
+
+func nextRot() -> float:
+	var index := tiles.size()
+	
+	return self.rotation.y + tileRotations[index]
