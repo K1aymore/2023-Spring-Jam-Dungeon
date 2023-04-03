@@ -1,12 +1,14 @@
-[gd_scene load_steps=3 format=3 uid="uid://qk8aygucikxb"]
+[gd_scene load_steps=4 format=3 uid="uid://qk8aygucikxb"]
 
-[ext_resource type="Texture2D" uid="uid://cq72f4a7xele5" path="res://Textures/wall.png" id="1_xt288"]
+[ext_resource type="Script" path="res://Scenes/wall.gd" id="1_upitt"]
+[ext_resource type="Texture2D" uid="uid://cq72f4a7xele5" path="res://Assets/wall.png" id="1_xt288"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_y73v3"]
 size = Vector3(4, 3.992, 0.233)
 
 [node name="Wall1" type="CollisionShape3D"]
 shape = SubResource("BoxShape3D_y73v3")
+script = ExtResource("1_upitt")
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.001)

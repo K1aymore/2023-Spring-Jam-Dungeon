@@ -1,6 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://6y73t8d1i7pg"]
+[gd_scene load_steps=2 format=3 uid="uid://c5uypcvh70qva"]
 
-[ext_resource type="Script" path="res://tile.gd" id="1_qy24a"]
+[ext_resource type="Script" path="res://Scripts/tile.gd" id="1_nc6gv"]
 
 [node name="Tile" type="StaticBody3D"]
-script = ExtResource("1_qy24a")
+script = ExtResource("1_nc6gv")

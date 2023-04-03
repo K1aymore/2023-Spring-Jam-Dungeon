@@ -1,10 +1,8 @@
 [gd_scene load_steps=7 format=3 uid="uid://brxt736rcvqo6"]
 
 [ext_resource type="Script" path="res://Scripts/Level.gd" id="1_v6yfd"]
-[ext_resource type="Texture2D" uid="uid://dxhgywcav7ad8" path="res://Textures/floor.png" id="2_c3s3j"]
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_vusah"]
-load_path = "res://.godot/imported/ronksseq96.png-4b94a952736fe30e18d7d556960303b3.s3tc.ctex"
+[ext_resource type="Texture2D" uid="uid://dj0iny2bl1sat" path="res://Assets/roof.png" id="2_ac6gl"]
+[ext_resource type="Texture2D" uid="uid://dxhgywcav7ad8" path="res://Assets/floor.png" id="2_c3s3j"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_oad6b"]
 ground_bottom_color = Color(0.133333, 0.188235, 0.168627, 1)
@@ -22,7 +20,7 @@ script = ExtResource("1_v6yfd")
 [node name="Roof" type="Sprite3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 2)
 axis = 1
-texture = SubResource("CompressedTexture2D_vusah")
+texture = ExtResource("2_ac6gl")
 region_enabled = true
 region_rect = Rect2(0, 0, 20000, 20000)
 
