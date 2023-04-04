@@ -31,6 +31,11 @@ var back = Vector3i(-2, 0, 0)
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	buildWalls()
+	
+	if rotation.y < 0:
+		rotation.y += PI * 2
+	elif rotation.y >= PI * 2:
+		rotation.y -= PI * 2
 
 
 func buildWalls():

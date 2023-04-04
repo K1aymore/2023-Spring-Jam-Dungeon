@@ -4,6 +4,9 @@ extends CharacterBody3D
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
+	
+	#if all four sides blocked
+	#	restart level
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
