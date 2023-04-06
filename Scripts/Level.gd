@@ -1,9 +1,10 @@
 extends Node3D
 
+class_name Level
 
 const OFFSET = Vector2(0, -4)
 
-const TILE_NUM = 50
+const TILE_NUM = 30
 var counter := 0
 var openEnds := 0
 
@@ -12,6 +13,8 @@ var startTile := Tile.new()
 var lastTile : Tile
 
 const DEBUG = false
+
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -121,8 +124,9 @@ func tileExists(pos : Vector3) -> bool:
 	return tileExistsRec(pos, startTile)
 
 
-func tileExistsRec(pos : Vector3, searchTile : Tile) -> bool:
-	if searchTile.position.is_equal_approx(pos):
+func tileExistsRec(pos : Vector3i, searchTile : Tile) -> bool:
+	pos = pos.snapped(Vector3i(4, 1, 4))
+	if searchTile.position.snapped(Vector3i(4, 1, 4)).is_equal_approx(pos):
 		return true
 	
 	for t in searchTile.tiles:

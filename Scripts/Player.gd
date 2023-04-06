@@ -1,18 +1,21 @@
 extends CharacterBody3D
 
+@onready var game = get_parent()
+@onready var State = game.State
+
+signal blocked
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
-	
-	#if all four sides blocked
-	#	restart level
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	turn()
-	move()
+	if game.state == State.EXPLORE:
+		turn()
+		move()
+		checkBlocked()
 
 
 
@@ -69,3 +72,8 @@ func calc_forw_move() -> Vector3:
 	
 	return Vector3.ZERO
 
+
+func checkBlocked():
+	if $RayForward.is_colliding() && $RayLeft.is_colliding() && \
+			$RayBack.is_colliding() && $RayRight.is_colliding():
+		emit_signal("blocked")

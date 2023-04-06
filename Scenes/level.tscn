@@ -1,8 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://dec7e8vly51g8"]
+[gd_scene load_steps=7 format=3 uid="uid://brxt736rcvqo6"]
 
 [ext_resource type="Script" path="res://Scripts/Level.gd" id="1_v6yfd"]
 [ext_resource type="Texture2D" uid="uid://dj0iny2bl1sat" path="res://Assets/roof.png" id="2_ac6gl"]
-[ext_resource type="Texture2D" uid="uid://dxhgywcav7ad8" path="res://Assets/floor2.png" id="3_2hjit"]
+[ext_resource type="Texture2D" uid="uid://bq0neir4b185q" path="res://Assets/floor.png" id="2_c3s3j"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_oad6b"]
 ground_bottom_color = Color(0.133333, 0.188235, 0.168627, 1)
@@ -27,7 +27,7 @@ region_rect = Rect2(0, 0, 20000, 20000)
 [node name="Floor" type="Sprite3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)
 axis = 1
-texture = ExtResource("3_2hjit")
+texture = ExtResource("2_c3s3j")
 region_enabled = true
 region_rect = Rect2(0, 0, 20000, 20000)
 

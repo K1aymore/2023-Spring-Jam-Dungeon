@@ -7,10 +7,38 @@ var deltaG : float
 
 const MAPCAM_HEIGHT = 10
 
+var Level := preload("res://Scenes/level.tscn")
+var level : Level
+
+
+var state : State = State.EXPLORE
+enum State {
+	EXPLORE,
+	COMBAT,
+}
+
+
+var turn : Turn
+enum Turn {
+	PLAYER,
+	ENEMY
+}
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	var startPos = $Level.startTile.position
+	await get_tree().root.ready
+	newLevel()
+
+
+
+func newLevel():
+	if level is Level:
+		remove_child(level)
+	level = Level.instantiate()
+	add_child(level)
+	
+	var startPos = level.startTile.position
 	startPos.y += 2
 	player.position = startPos
 	player.rotation.y = (3*PI)/2
@@ -67,3 +95,8 @@ func smoothMove():
 	var moveSpeed = clamp(deltaG * get_parent().moveSpeed, 0, 1)
 	playerCam.position = playerCam.position.lerp(player.position, moveSpeed)
 
+
+
+func _on_player_blocked():
+	print("Blocked")
+	newLevel()
