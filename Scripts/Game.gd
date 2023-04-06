@@ -5,7 +5,7 @@ extends MarginContainer
 
 var deltaG : float
 
-const MAPCAM_HEIGHT = 10
+const MAPCAM_HEIGHT = 20
 
 var Level := preload("res://Scenes/level.tscn")
 var level : Level
@@ -55,6 +55,15 @@ func _process(delta : float):
 
 
 
+
+
+
+
+
+
+
+
+
 func turnCam():
 	if get_parent().instantTurn:
 		instTurn()
@@ -73,7 +82,6 @@ func instTurn():
 func smoothTurn():
 	var turnSpeed = clamp(deltaG * get_parent().turnSpeed, 0, 1)
 	playerCam.rotation.y = lerp_angle(playerCam.rotation.y, player.rotation.y, turnSpeed)
-
 
 
 

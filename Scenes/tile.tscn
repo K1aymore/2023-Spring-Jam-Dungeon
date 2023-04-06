@@ -1,6 +1,15 @@
-[gd_scene load_steps=2 format=3 uid="uid://c5uypcvh70qva"]
+[gd_scene load_steps=3 format=3 uid="uid://c5uypcvh70qva"]
 
 [ext_resource type="Script" path="res://Scripts/tile.gd" id="1_nc6gv"]
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_c6aub"]
+size = Vector3(1, 2, 1)
+
 [node name="Tile" type="StaticBody3D"]
 script = ExtResource("1_nc6gv")
+
+[node name="TileArea" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TileArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("BoxShape3D_c6aub")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://brxt736rcvqo6"]
+[gd_scene load_steps=9 format=3 uid="uid://brxt736rcvqo6"]
 
 [ext_resource type="Script" path="res://Scripts/Level.gd" id="1_v6yfd"]
 [ext_resource type="Texture2D" uid="uid://dj0iny2bl1sat" path="res://Assets/roof.png" id="2_ac6gl"]
@@ -13,6 +13,14 @@ sky_material = SubResource("ProceduralSkyMaterial_oad6b")
 [sub_resource type="Environment" id="Environment_mlbo2"]
 background_mode = 2
 sky = SubResource("Sky_xu33g")
+
+[sub_resource type="Gradient" id="Gradient_jgrok"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0.259091)
+colors = PackedColorArray(0.125911, 0.125911, 0.125911, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_iefia"]
+gradient = SubResource("Gradient_jgrok")
 
 [node name="Level" type="Node3D"]
 script = ExtResource("1_v6yfd")
@@ -33,3 +41,11 @@ region_rect = Rect2(0, 0, 20000, 20000)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_mlbo2")
+
+[node name="MapBlack" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 6, 0)
+transparent = false
+double_sided = false
+texture = SubResource("GradientTexture2D_iefia")
+region_enabled = true
+region_rect = Rect2(0, 0, 20000, 20000)

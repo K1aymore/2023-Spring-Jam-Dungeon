@@ -1,4 +1,4 @@
-extends MarginContainer
+extends Control
 
 
 enum Mode {
@@ -26,6 +26,10 @@ func setMode(mode : Mode):
 			$Main.visible = true
 		Mode.OPTIONS:
 			$Options.visible = true
+			$Back.visible = true
+	
+	if mode != Mode.HIDDEN:
+		$ColorRect.visible = true
 
 
 func hideAll():
@@ -54,3 +58,7 @@ func _on_smooth_turning_toggled(button_pressed):
 
 func _on_smooth_movement_toggled(button_pressed):
 	get_parent().instantMove = !button_pressed
+
+
+func _on_back_pressed():
+	setMode(Mode.MAIN)

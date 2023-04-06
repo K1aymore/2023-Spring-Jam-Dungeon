@@ -1,5 +1,9 @@
-[gd_resource type="Theme" format=3 uid="uid://dxbyj4ks8h1tj"]
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://dxbyj4ks8h1tj"]
+
+[ext_resource type="FontFile" uid="uid://b3newiqqv4yrf" path="res://Assets/font.ttf" id="1_wed6y"]
 
 [resource]
+default_font = ExtResource("1_wed6y")
+default_font_size = 30
 /constants/Autohide = 1
 /constants/Separation = 9

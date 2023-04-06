@@ -1,6 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://qk8aygucikxb"]
+[gd_scene load_steps=4 format=3 uid="uid://cigwbp0ppfxmr"]
 
-[ext_resource type="Script" path="res://Scenes/wall.gd" id="1_upitt"]
+[ext_resource type="Script" path="res://Scripts/wall.gd" id="1_1ipy2"]
 [ext_resource type="Texture2D" uid="uid://cq72f4a7xele5" path="res://Assets/wall.png" id="1_xt288"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_y73v3"]
@@ -8,7 +8,7 @@ size = Vector3(4, 3.992, 0.233)
 
 [node name="Wall1" type="CollisionShape3D"]
 shape = SubResource("BoxShape3D_y73v3")
-script = ExtResource("1_upitt")
+script = ExtResource("1_1ipy2")
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.001)
@@ -16,3 +16,10 @@ transparent = false
 texture = ExtResource("1_xt288")
 region_enabled = true
 region_rect = Rect2(0, 0, 400, 400)
+
+[node name="MapWall" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 8, 0.001)
+transparent = false
+texture = ExtResource("1_xt288")
+region_enabled = true
+region_rect = Rect2(0, 0, 500, 100)
