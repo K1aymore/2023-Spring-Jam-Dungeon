@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://dhyfh26jjq4pv"]
+[gd_scene load_steps=5 format=3 uid="uid://dhyfh26jjq4pv"]
 
 [ext_resource type="Script" path="res://Scripts/Super.gd" id="1_ipsc5"]
+[ext_resource type="Theme" uid="uid://dxbyj4ks8h1tj" path="res://new_theme.tres" id="1_q166g"]
 [ext_resource type="PackedScene" uid="uid://rnc4uk4rths3" path="res://Scenes/game.tscn" id="2_djx07"]
 [ext_resource type="PackedScene" uid="uid://b3scnladirb5x" path="res://Scenes/menu.tscn" id="7_dx2iq"]
 
@@ -13,10 +14,21 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_q166g")
 script = ExtResource("1_ipsc5")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.290196, 0.262745, 0.219608, 1)
 
 [node name="Game" parent="." instance=ExtResource("2_djx07")]
 layout_mode = 1
 
 [node name="Menu" parent="." instance=ExtResource("7_dx2iq")]
+visible = false
 layout_mode = 1

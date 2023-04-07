@@ -21,63 +21,99 @@ script = ExtResource("1_j0cq4")
 [node name="Player" parent="." instance=ExtResource("3_av2ii")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 
-[node name="VSplitContainer" type="VSplitContainer" parent="."]
+[node name="UI" type="VSplitContainer" parent="."]
 layout_mode = 2
 theme = ExtResource("4_ho0vs")
-split_offset = 153
+split_offset = 608
+dragger_visibility = 1
 
-[node name="HSplitContainer" type="HSplitContainer" parent="VSplitContainer"]
+[node name="Top" type="HSplitContainer" parent="UI"]
 layout_mode = 2
 size_flags_vertical = 3
 theme = ExtResource("4_ho0vs")
-split_offset = 309
+split_offset = 485
+dragger_visibility = 1
 
-[node name="GameContainer" type="SubViewportContainer" parent="VSplitContainer/HSplitContainer"]
+[node name="GameContainer" type="SubViewportContainer" parent="UI/Top"]
 layout_mode = 2
 size_flags_horizontal = 3
 stretch = true
 
-[node name="GameViewport" type="SubViewport" parent="VSplitContainer/HSplitContainer/GameContainer"]
+[node name="GameViewport" type="SubViewport" parent="UI/Top/GameContainer"]
 handle_input_locally = false
-size = Vector2i(1253, 677)
+size = Vector2i(1429, 786)
 render_target_update_mode = 4
 
-[node name="PlayerCam" type="Camera3D" parent="VSplitContainer/HSplitContainer/GameContainer/GameViewport"]
+[node name="PlayerCam" type="Camera3D" parent="UI/Top/GameContainer/GameViewport"]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 current = true
 fov = 100.0
 
-[node name="Sprite3D" type="Sprite3D" parent="VSplitContainer/HSplitContainer/GameContainer/GameViewport/PlayerCam"]
+[node name="Sprite3D" type="Sprite3D" parent="UI/Top/GameContainer/GameViewport/PlayerCam"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 8.01856, -3.93402e-07)
 texture = ExtResource("5_4hqqr")
 
-[node name="Characters" type="VBoxContainer" parent="VSplitContainer/HSplitContainer"]
+[node name="Characters" type="VBoxContainer" parent="UI/Top"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Bottom" type="HSplitContainer" parent="VSplitContainer"]
+[node name="Bottom" type="HSplitContainer" parent="UI"]
 layout_mode = 2
 size_flags_vertical = 3
 theme = ExtResource("4_ho0vs")
-split_offset = 200
+split_offset = 51
+dragger_visibility = 1
 
-[node name="Items" type="GridContainer" parent="VSplitContainer/Bottom"]
+[node name="MarginContainer" type="MarginContainer" parent="UI/Bottom"]
 layout_mode = 2
 size_flags_horizontal = 3
-columns = 3
+theme_override_constants/margin_left = 51
+theme_override_constants/margin_top = 24
+theme_override_constants/margin_right = 43
+theme_override_constants/margin_bottom = 30
 
-[node name="MapContainer" type="SubViewportContainer" parent="VSplitContainer/Bottom"]
+[node name="Attacks" type="GridContainer" parent="UI/Bottom/MarginContainer"]
+layout_mode = 2
+theme_override_constants/h_separation = 83
+theme_override_constants/v_separation = 62
+columns = 2
+
+[node name="Punch" type="Button" parent="UI/Bottom/MarginContainer/Attacks"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Punch"
+
+[node name="Blast" type="Button" parent="UI/Bottom/MarginContainer/Attacks"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Blast"
+
+[node name="Kick" type="Button" parent="UI/Bottom/MarginContainer/Attacks"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Kick"
+
+[node name="Hug" type="Button" parent="UI/Bottom/MarginContainer/Attacks"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Hug"
+
+[node name="MapContainer" type="SubViewportContainer" parent="UI/Bottom"]
 layout_mode = 2
 size_flags_horizontal = 3
 stretch = true
 
-[node name="MapViewport" type="SubViewport" parent="VSplitContainer/Bottom/MapContainer"]
+[node name="MapViewport" type="SubViewport" parent="UI/Bottom/MapContainer"]
 handle_input_locally = false
-size = Vector2i(744, 371)
+size = Vector2i(893, 262)
 render_target_update_mode = 4
 
-[node name="MapCam" type="Camera3D" parent="VSplitContainer/Bottom/MapContainer/MapViewport"]
+[node name="MapCam" type="Camera3D" parent="UI/Bottom/MapContainer/MapViewport"]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 20, 0)
 projection = 1

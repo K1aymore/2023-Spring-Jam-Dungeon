@@ -10,6 +10,7 @@ var moveSpeed := 10
 func _ready():
 	get_tree().paused = true
 	$Menu.setMode($Menu.Mode.MAIN)
+	$Menu.visible = true
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

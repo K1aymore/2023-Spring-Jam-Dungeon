@@ -21,7 +21,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.588235, 0.498039, 0.352941, 1)
+color = Color(0, 0, 0, 0.858824)
+metadata/_edit_lock_ = true
 
 [node name="Main" type="Control" parent="."]
 layout_mode = 1
@@ -38,10 +39,10 @@ anchor_left = 0.5
 anchor_top = 0.498
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -79.0
-offset_top = -148.43
-offset_right = 74.0
-offset_bottom = 137.5
+offset_left = -113.0
+offset_top = -173.84
+offset_right = 128.0
+offset_bottom = 193.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 0
@@ -63,42 +64,49 @@ layout_mode = 2
 size_flags_vertical = 6
 text = "Quit"
 
-[node name="Options" type="TabContainer" parent="."]
+[node name="Options" type="MarginContainer" parent="."]
 visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 666
+theme_override_constants/margin_top = 430
+theme_override_constants/margin_right = 666
+theme_override_constants/margin_bottom = 430
+
+[node name="Options" type="Panel" parent="Options"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Options/Options"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -230.0
-offset_top = -246.0
-offset_right = 225.0
-offset_bottom = 194.0
+offset_left = -244.0
+offset_top = -75.0
+offset_right = 244.0
+offset_bottom = 75.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("2_4ncmn")
-metadata/_edit_group_ = true
-
-[node name="Movement" type="MarginContainer" parent="Options"]
-layout_mode = 2
-theme_override_constants/margin_left = 62
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Options/Movement"]
-layout_mode = 2
 alignment = 1
 
-[node name="SmoothMovement" type="CheckBox" parent="Options/Movement/VBoxContainer"]
+[node name="SmoothMovement" type="CheckBox" parent="Options/Options/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 4
 button_pressed = true
 text = "Smooth Movement"
+expand_icon = true
 
-[node name="SmoothTurning" type="CheckBox" parent="Options/Movement/VBoxContainer"]
+[node name="SmoothTurning" type="CheckBox" parent="Options/Options/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 0
-size_flags_vertical = 4
+size_flags_vertical = 0
 button_pressed = true
 text = "Smooth Turning"
 
@@ -106,10 +114,10 @@ text = "Smooth Turning"
 visible = false
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.815625
-anchor_top = 0.838889
-anchor_right = 0.885938
-anchor_bottom = 0.896296
+anchor_left = 0.655729
+anchor_top = 0.694444
+anchor_right = 0.726042
+anchor_bottom = 0.762037
 grow_horizontal = 0
 grow_vertical = 0
 text = "Back"
@@ -118,6 +126,6 @@ metadata/_edit_use_anchors_ = true
 [connection signal="pressed" from="Main/VBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="Main/VBoxContainer/OptionsButton" to="." method="_on_options_button_pressed"]
 [connection signal="pressed" from="Main/VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]
-[connection signal="toggled" from="Options/Movement/VBoxContainer/SmoothMovement" to="." method="_on_smooth_movement_toggled"]
-[connection signal="toggled" from="Options/Movement/VBoxContainer/SmoothTurning" to="." method="_on_smooth_turning_toggled"]
+[connection signal="toggled" from="Options/Options/VBoxContainer/SmoothMovement" to="." method="_on_smooth_movement_toggled"]
+[connection signal="toggled" from="Options/Options/VBoxContainer/SmoothTurning" to="." method="_on_smooth_turning_toggled"]
 [connection signal="pressed" from="Back" to="." method="_on_back_pressed"]
