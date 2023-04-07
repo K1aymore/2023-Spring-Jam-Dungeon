@@ -1,10 +1,11 @@
-[gd_scene load_steps=17 format=3 uid="uid://rnc4uk4rths3"]
+[gd_scene load_steps=18 format=3 uid="uid://rnc4uk4rths3"]
 
 [ext_resource type="Script" path="res://Scripts/Game.gd" id="1_j0cq4"]
 [ext_resource type="Texture2D" uid="uid://cy4uu4u6ef0fr" path="res://Assets/menu1.png" id="3_0b0sn"]
 [ext_resource type="PackedScene" uid="uid://c3axriqimy1wf" path="res://Scenes/player.tscn" id="3_av2ii"]
 [ext_resource type="Texture2D" uid="uid://nyrua2xjb18e" path="res://Assets/menu1 copy.png" id="4_ma7ab"]
 [ext_resource type="PackedScene" uid="uid://30ej6anya2ky" path="res://Scenes/character.tscn" id="5_2foi4"]
+[ext_resource type="Theme" uid="uid://dxbyj4ks8h1tj" path="res://new_theme.tres" id="6_bo8lf"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hvxto"]
 
@@ -174,10 +175,10 @@ render_target_update_mode = 4
 
 [node name="Map" type="Control" parent="."]
 layout_mode = 1
-anchor_left = 0.3125
-anchor_top = 0.578704
-anchor_right = 0.473958
-anchor_bottom = 0.75
+anchor_left = 0.439583
+anchor_top = 0.59537
+anchor_right = 0.558333
+anchor_bottom = 0.719444
 offset_left = -20.0
 offset_top = -20.0
 offset_right = 20.0
@@ -221,7 +222,7 @@ stretch = true
 
 [node name="MapViewport" type="SubViewport" parent="Map/NinePatchRect/MarginContainer/MapContainer"]
 handle_input_locally = false
-size = Vector2i(304, 185)
+size = Vector2i(222, 134)
 render_target_update_mode = 4
 
 [node name="MapCam" type="Camera3D" parent="Map/NinePatchRect/MarginContainer/MapContainer/MapViewport"]
@@ -273,25 +274,53 @@ theme_override_constants/margin_bottom = 20
 [node name="Characters" type="VBoxContainer" parent="Party/NinePatchRect/MarginContainer"]
 layout_mode = 2
 
-[node name="HBoxContainer" parent="Party/NinePatchRect/MarginContainer/Characters" instance=ExtResource("5_2foi4")]
+[node name="Character" parent="Party/NinePatchRect/MarginContainer/Characters" instance=ExtResource("5_2foi4")]
 layout_mode = 2
 size_flags_horizontal = 1
 size_flags_vertical = 3
 
-[node name="HBoxContainer2" parent="Party/NinePatchRect/MarginContainer/Characters" instance=ExtResource("5_2foi4")]
+[node name="Character2" parent="Party/NinePatchRect/MarginContainer/Characters" instance=ExtResource("5_2foi4")]
 layout_mode = 2
 size_flags_horizontal = 1
 size_flags_vertical = 3
 
-[node name="HBoxContainer3" parent="Party/NinePatchRect/MarginContainer/Characters" instance=ExtResource("5_2foi4")]
+[node name="Character3" parent="Party/NinePatchRect/MarginContainer/Characters" instance=ExtResource("5_2foi4")]
 layout_mode = 2
 size_flags_horizontal = 1
 size_flags_vertical = 3
 
-[node name="HBoxContainer4" parent="Party/NinePatchRect/MarginContainer/Characters" instance=ExtResource("5_2foi4")]
+[node name="Character4" parent="Party/NinePatchRect/MarginContainer/Characters" instance=ExtResource("5_2foi4")]
 layout_mode = 2
 size_flags_horizontal = 1
 size_flags_vertical = 3
+
+[node name="EnemyStats" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.217708
+anchor_top = 0.584259
+anchor_right = 0.391667
+anchor_bottom = 0.716667
+offset_right = -6.10352e-05
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("6_bo8lf")
+metadata/_edit_use_anchors_ = true
+metadata/_edit_group_ = true
+
+[node name="Label" type="Label" parent="EnemyStats"]
+layout_mode = 2
+text = "Enemy Health"
+
+[node name="ProgressBar" type="ProgressBar" parent="EnemyStats"]
+layout_mode = 2
+size_flags_vertical = 3
+value = 50.0
+show_percentage = false
+metadata/_edit_use_anchors_ = true
+
+[node name="TurnDelay" type="Timer" parent="."]
+wait_time = 0.5
 
 [connection signal="pressed" from="TextureRect/Attack" to="." method="_on_attack_pressed"]
 [connection signal="blocked" from="Player" to="." method="_on_player_blocked"]

@@ -64,11 +64,14 @@ func _process(delta : float):
 	if state == State.COMBAT:
 		if enemy != null:
 			enemy.position.y = lerp(enemy.position.y, 280.0, delta * 3)
+			$EnemyStats/ProgressBar.value = enemy.health
 		combatFade.add_theme_stylebox_override("Panel", combatFade.get_theme_stylebox("Panel"))
+		
 		if turn == Turn.PLAYER:
 			pass
 		if turn == Turn.ENEMY:
 			pass
+		
 		if enemy.health < 0:
 			level.getTile(player.position).isCombatTile = false
 			enemy.scale = enemy.scale.move_toward(Vector2.ZERO, delta * 10)
@@ -83,6 +86,7 @@ func startExplore():
 	
 	state = State.EXPLORE
 	combatFade.visible = false
+	$EnemyStats.visible = false
 
 
 func startCombat():
@@ -95,6 +99,8 @@ func startCombat():
 	
 	%CombatViewport.add_child(enemy)
 	combatFade.visible = true
+	$EnemyStats/ProgressBar.max_value = enemy.health
+	$EnemyStats.visible = true
 
 
 
