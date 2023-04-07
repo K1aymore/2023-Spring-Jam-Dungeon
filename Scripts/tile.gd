@@ -34,7 +34,8 @@ var back = Vector3i(-2, 0, 0)
 func _ready():
 	buildWalls()
 	if type != Type.START:
-		isCombatTile = true
+		var rand := randi_range(0, 5)
+		isCombatTile = rand == 0
 
 
 func buildWalls():

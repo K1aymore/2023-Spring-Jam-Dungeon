@@ -10,6 +10,7 @@ const MAPCAM_HEIGHT = 20
 var Level := preload("res://Scenes/level.tscn")
 var level : Level
 
+@onready var combatFade = %CombatFade
 
 var state : State = State.EXPLORE
 enum State {
@@ -32,6 +33,7 @@ var enemy : AnimatedSprite2D
 func _ready():
 	await get_tree().root.ready
 	newLevel()
+	startExplore()
 
 
 
@@ -55,16 +57,32 @@ func _process(delta : float):
 	turnCam()
 	moveCam()
 	
-	if state == State.EXPLORE && level.getTile(player.position).isCombatTile:
-		startCombat()
+	if state == State.EXPLORE:
+		if level.getTile(player.position).isCombatTile:
+			startCombat()
 	
 	if state == State.COMBAT:
-		enemy.position = enemy.position.move_toward(Vector2(960, 370), delta * 500)
-		$CombatFade.add_theme_stylebox_override("Panel", $CombatFade.get_theme_stylebox("Panel"))
+		if enemy != null:
+			enemy.position.y = lerp(enemy.position.y, 327.0, delta * 3)
+		combatFade.add_theme_stylebox_override("Panel", combatFade.get_theme_stylebox("Panel"))
 		if turn == Turn.PLAYER:
 			pass
 		if turn == Turn.ENEMY:
 			pass
+		if enemy.health < 0:
+			level.getTile(player.position).isCombatTile = false
+			enemy.scale = enemy.scale.move_toward(Vector2.ZERO, delta * 10)
+			if enemy.scale.x < 0.5:
+				startExplore()
+
+
+
+func startExplore():
+	if enemy != null:
+		enemy.queue_free()
+	
+	state = State.EXPLORE
+	combatFade.visible = false
 
 
 func startCombat():
@@ -72,15 +90,19 @@ func startCombat():
 	turn = Turn.PLAYER
 	enemy = Enemy.instantiate()
 	
-	enemy.position = Vector2(960, 840)
-	enemy.scale = Vector2(4, 4)
+	enemy.position = Vector2(765, 840)
+	enemy.scale = Vector2(3.7, 3.7)
 	
 	add_child(enemy)
-	$CombatFade.visible = true
+	combatFade.visible = true
 
 
 
-
+func playerAttack(damage : int):
+	if turn != Turn.PLAYER || state != State.COMBAT || enemy == null:
+		return
+	
+	enemy.health -= damage
 
 
 
@@ -103,7 +125,7 @@ func instTurn():
 	playerCam.rotation.y = player.rotation.y
 
 func smoothTurn():
-	var turnSpeed = clamp(deltaG * get_parent().turnSpeed, 0, 1)
+	var turnSpeed = deltaG * get_parent().turnSpeed
 	playerCam.rotation.y = lerp_angle(playerCam.rotation.y, player.rotation.y, turnSpeed)
 
 
@@ -131,3 +153,7 @@ func smoothMove():
 func _on_player_blocked():
 	print("Blocked")
 	newLevel()
+
+
+func _on_attack_pressed():
+	playerAttack(4)

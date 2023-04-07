@@ -1,8 +1,25 @@
-[gd_scene load_steps=7 format=3 uid="uid://rnc4uk4rths3"]
+[gd_scene load_steps=16 format=3 uid="uid://rnc4uk4rths3"]
 
 [ext_resource type="Script" path="res://Scripts/Game.gd" id="1_j0cq4"]
-[ext_resource type="Texture2D" uid="uid://8hd161wccvj0" path="res://Assets/menu.png" id="2_doqpw"]
+[ext_resource type="Texture2D" uid="uid://cy4uu4u6ef0fr" path="res://Assets/menu1.png" id="3_0b0sn"]
 [ext_resource type="PackedScene" uid="uid://c3axriqimy1wf" path="res://Scenes/player.tscn" id="3_av2ii"]
+[ext_resource type="Texture2D" uid="uid://nyrua2xjb18e" path="res://Assets/menu1 copy.png" id="4_ma7ab"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hvxto"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kmdko"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pslum"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xl35r"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_in3pd"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_osnlh"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dpib1"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_g7d71"]
 
 [sub_resource type="Gradient" id="Gradient_1rw0r"]
 offsets = PackedFloat32Array(0.495455)
@@ -11,7 +28,7 @@ colors = PackedColorArray(0.870588, 0.729412, 0.443137, 1)
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_f5lvn"]
 gradient = SubResource("Gradient_1rw0r")
 width = 100
-height = 120
+height = 100
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yjr5w"]
 bg_color = Color(0, 0, 0, 0.819608)
@@ -25,104 +42,219 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_j0cq4")
+metadata/_edit_lock_ = true
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_0b0sn")
+stretch_mode = 5
+metadata/_edit_lock_ = true
+
+[node name="Attack" type="Button" parent="TextureRect"]
+layout_mode = 2
+offset_left = 419.0
+offset_top = 869.0
+offset_right = 727.0
+offset_bottom = 1032.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/hover = SubResource("StyleBoxEmpty_hvxto")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_kmdko")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_pslum")
+flat = true
+
+[node name="Defend" type="Button" parent="TextureRect"]
+layout_mode = 2
+offset_left = 800.0
+offset_top = 871.0
+offset_right = 1115.0
+offset_bottom = 1030.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/normal = SubResource("StyleBoxEmpty_xl35r")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_in3pd")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_osnlh")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_dpib1")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_g7d71")
+flat = true
 
 [node name="Player" parent="." instance=ExtResource("3_av2ii")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 
-[node name="GameContainer" type="SubViewportContainer" parent="."]
+[node name="Game" type="Control" parent="."]
 layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.260417
-anchor_top = 0.0740741
-anchor_right = 0.741146
-anchor_bottom = 0.577778
+anchor_left = 0.208854
+anchor_top = 0.0481481
+anchor_right = 0.583333
+anchor_bottom = 0.532407
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
-size_flags_horizontal = 3
-stretch = true
+metadata/_edit_group_ = true
 metadata/_edit_use_anchors_ = true
 
-[node name="GameViewport" type="SubViewport" parent="GameContainer"]
+[node name="NinePatchRect" type="NinePatchRect" parent="Game"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_ma7ab")
+region_rect = Rect2(0, 0, 570, 350)
+patch_margin_left = 22
+patch_margin_top = 22
+patch_margin_right = 26
+patch_margin_bottom = 20
+
+[node name="MarginContainer" type="MarginContainer" parent="Game/NinePatchRect"]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 22
+theme_override_constants/margin_top = 22
+theme_override_constants/margin_right = 25
+theme_override_constants/margin_bottom = 18
+
+[node name="GameContainer" type="SubViewportContainer" parent="Game/NinePatchRect/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+stretch = true
+
+[node name="GameViewport" type="SubViewport" parent="Game/NinePatchRect/MarginContainer/GameContainer"]
 handle_input_locally = false
-size = Vector2i(923, 544)
+size = Vector2i(712, 523)
 render_target_update_mode = 4
 
-[node name="PlayerCam" type="Camera3D" parent="GameContainer/GameViewport"]
+[node name="PlayerCam" type="Camera3D" parent="Game/NinePatchRect/MarginContainer/GameContainer/GameViewport"]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 current = true
 fov = 100.0
 
-[node name="Sprite3D" type="Sprite3D" parent="GameContainer/GameViewport/PlayerCam"]
+[node name="Sprite3D" type="Sprite3D" parent="Game/NinePatchRect/MarginContainer/GameContainer/GameViewport/PlayerCam"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 8.01856, -3.93402e-07)
 texture = SubResource("GradientTexture2D_f5lvn")
 region_rect = Rect2(46, 6.5, 50, 94)
 
-[node name="MapContainer" type="SubViewportContainer" parent="."]
+[node name="CombatFade" type="Panel" parent="Game/NinePatchRect/MarginContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_yjr5w")
+
+[node name="Map" type="Control" parent="."]
 layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.632292
-anchor_top = 0.0703704
-anchor_right = 0.741667
-anchor_bottom = 0.196296
+anchor_left = 0.3125
+anchor_top = 0.578704
+anchor_right = 0.473958
+anchor_bottom = 0.75
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+metadata/_edit_group_ = true
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Map"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_ma7ab")
+region_rect = Rect2(0, 0, 570, 350)
+patch_margin_left = 22
+patch_margin_top = 22
+patch_margin_right = 26
+patch_margin_bottom = 20
+
+[node name="MarginContainer" type="MarginContainer" parent="Map/NinePatchRect"]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 22
+theme_override_constants/margin_top = 22
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 18
+
+[node name="MapContainer" type="SubViewportContainer" parent="Map/NinePatchRect/MarginContainer"]
+layout_mode = 2
 size_flags_horizontal = 3
 stretch = true
-metadata/_edit_use_anchors_ = true
 
-[node name="MapViewport" type="SubViewport" parent="MapContainer"]
+[node name="MapViewport" type="SubViewport" parent="Map/NinePatchRect/MarginContainer/MapContainer"]
 handle_input_locally = false
-size = Vector2i(210, 136)
+size = Vector2i(304, 185)
 render_target_update_mode = 4
 
-[node name="MapCam" type="Camera3D" parent="MapContainer/MapViewport"]
+[node name="MapCam" type="Camera3D" parent="Map/NinePatchRect/MarginContainer/MapContainer/MapViewport"]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 20, 0)
 projection = 1
 size = 15.0
 
-[node name="CombatFade" type="Panel" parent="."]
-visible = false
+[node name="Party" type="Control" parent="."]
 layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.246875
-anchor_top = 0.0490741
-anchor_right = 0.759896
-anchor_bottom = 0.617593
+anchor_left = 0.606771
+anchor_top = 0.0296296
+anchor_right = 0.788542
+anchor_bottom = 0.696296
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_yjr5w")
+metadata/_edit_use_anchors_ = true
+metadata/_edit_group_ = true
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Party"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_ma7ab")
+draw_center = false
+region_rect = Rect2(0, 0, 570, 350)
+patch_margin_left = 22
+patch_margin_top = 22
+patch_margin_right = 26
+patch_margin_bottom = 20
 metadata/_edit_use_anchors_ = true
 
-[node name="TextureRect" type="TextureRect" parent="."]
-z_index = 1
-layout_mode = 2
-offset_left = 10.0
-offset_top = 10.0
-offset_right = 1910.0
-offset_bottom = 1070.0
-texture = ExtResource("2_doqpw")
-stretch_mode = 5
+[node name="MarginContainer" type="MarginContainer" parent="Party/NinePatchRect"]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 22
+theme_override_constants/margin_top = 22
+theme_override_constants/margin_right = 26
+theme_override_constants/margin_bottom = 20
 
-[node name="Attack" type="Button" parent="TextureRect"]
+[node name="Characters" type="VBoxContainer" parent="Party/NinePatchRect/MarginContainer"]
 layout_mode = 2
-offset_left = 471.0
-offset_top = 724.0
-offset_right = 869.0
-offset_bottom = 915.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-flat = true
 
-[node name="Defend" type="Button" parent="TextureRect"]
-layout_mode = 2
-offset_left = 1040.0
-offset_top = 724.0
-offset_right = 1434.0
-offset_bottom = 911.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-flat = true
-
+[connection signal="pressed" from="TextureRect/Attack" to="." method="_on_attack_pressed"]
 [connection signal="blocked" from="Player" to="." method="_on_player_blocked"]

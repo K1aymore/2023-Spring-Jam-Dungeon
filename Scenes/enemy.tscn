@@ -96,6 +96,7 @@ animations = [{
 }]
 
 [node name="Enemy" type="AnimatedSprite2D"]
+scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_d1wm6")
 autoplay = "default"
 script = ExtResource("1_o27nw")
