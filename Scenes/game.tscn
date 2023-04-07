@@ -1,128 +1,220 @@
-[gd_scene load_steps=7 format=3 uid="uid://rnc4uk4rths3"]
+[gd_scene load_steps=5 format=3 uid="uid://rnc4uk4rths3"]
 
 [ext_resource type="Script" path="res://Scripts/Game.gd" id="1_j0cq4"]
-[ext_resource type="Texture2D" uid="uid://8hd161wccvj0" path="res://Assets/menu.png" id="2_doqpw"]
 [ext_resource type="PackedScene" uid="uid://c3axriqimy1wf" path="res://Scenes/player.tscn" id="3_av2ii"]
+[ext_resource type="Theme" uid="uid://dxbyj4ks8h1tj" path="res://new_theme.tres" id="4_ho0vs"]
+[ext_resource type="Texture2D" uid="uid://0plgdl6ql80a" path="res://icon.svg" id="5_4hqqr"]
 
-[sub_resource type="Gradient" id="Gradient_1rw0r"]
-offsets = PackedFloat32Array(0.495455)
-colors = PackedColorArray(0.870588, 0.729412, 0.443137, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_f5lvn"]
-gradient = SubResource("Gradient_1rw0r")
-width = 100
-height = 120
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yjr5w"]
-bg_color = Color(0, 0, 0, 0.819608)
-
-[node name="Game" type="Control"]
+[node name="Game" type="MarginContainer"]
 process_mode = 1
-layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
 script = ExtResource("1_j0cq4")
 
 [node name="Player" parent="." instance=ExtResource("3_av2ii")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 
-[node name="GameContainer" type="SubViewportContainer" parent="."]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.260417
-anchor_top = 0.0740741
-anchor_right = 0.741146
-anchor_bottom = 0.577778
-grow_horizontal = 2
-grow_vertical = 2
+[node name="UI" type="VSplitContainer" parent="."]
+layout_mode = 2
+theme = ExtResource("4_ho0vs")
+split_offset = 608
+dragger_visibility = 1
+
+[node name="Top" type="HSplitContainer" parent="UI"]
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("4_ho0vs")
+dragger_visibility = 1
+
+[node name="GameContainer" type="SubViewportContainer" parent="UI/Top"]
+layout_mode = 2
 size_flags_horizontal = 3
 stretch = true
-metadata/_edit_use_anchors_ = true
 
-[node name="GameViewport" type="SubViewport" parent="GameContainer"]
+[node name="GameViewport" type="SubViewport" parent="UI/Top/GameContainer"]
 handle_input_locally = false
-size = Vector2i(923, 544)
+size = Vector2i(1447, 786)
 render_target_update_mode = 4
 
-[node name="PlayerCam" type="Camera3D" parent="GameContainer/GameViewport"]
+[node name="PlayerCam" type="Camera3D" parent="UI/Top/GameContainer/GameViewport"]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 current = true
 fov = 100.0
 
-[node name="Sprite3D" type="Sprite3D" parent="GameContainer/GameViewport/PlayerCam"]
+[node name="Sprite3D" type="Sprite3D" parent="UI/Top/GameContainer/GameViewport/PlayerCam"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 8.01856, -3.93402e-07)
-texture = SubResource("GradientTexture2D_f5lvn")
-region_rect = Rect2(46, 6.5, 50, 94)
+texture = ExtResource("5_4hqqr")
 
-[node name="MapContainer" type="SubViewportContainer" parent="."]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.632292
-anchor_top = 0.0703704
-anchor_right = 0.741667
-anchor_bottom = 0.196296
-grow_horizontal = 2
-grow_vertical = 2
+[node name="Characters" type="VBoxContainer" parent="UI/Top"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/Top/Characters"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+
+[node name="TextureRect" type="TextureRect" parent="UI/Top/Characters/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("5_4hqqr")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/Top/Characters/HBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="UI/Top/Characters/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 37
+text = "Billy the Barbarian"
+
+[node name="TextureProgressBar" type="ProgressBar" parent="UI/Top/Characters/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+value = 80.0
+rounded = true
+allow_greater = true
+show_percentage = false
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="UI/Top/Characters"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+
+[node name="TextureRect" type="TextureRect" parent="UI/Top/Characters/HBoxContainer2"]
+layout_mode = 2
+texture = ExtResource("5_4hqqr")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/Top/Characters/HBoxContainer2"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="UI/Top/Characters/HBoxContainer2/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 37
+text = "Billy the Barbarian"
+
+[node name="TextureProgressBar" type="ProgressBar" parent="UI/Top/Characters/HBoxContainer2/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+value = 80.0
+rounded = true
+allow_greater = true
+show_percentage = false
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="UI/Top/Characters"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+
+[node name="TextureRect" type="TextureRect" parent="UI/Top/Characters/HBoxContainer3"]
+layout_mode = 2
+texture = ExtResource("5_4hqqr")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/Top/Characters/HBoxContainer3"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="UI/Top/Characters/HBoxContainer3/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 37
+text = "Billy the Barbarian"
+
+[node name="TextureProgressBar" type="ProgressBar" parent="UI/Top/Characters/HBoxContainer3/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+value = 80.0
+rounded = true
+allow_greater = true
+show_percentage = false
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="UI/Top/Characters"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+
+[node name="TextureRect" type="TextureRect" parent="UI/Top/Characters/HBoxContainer4"]
+layout_mode = 2
+texture = ExtResource("5_4hqqr")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/Top/Characters/HBoxContainer4"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="UI/Top/Characters/HBoxContainer4/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 37
+text = "Billy the Barbarian"
+
+[node name="TextureProgressBar" type="ProgressBar" parent="UI/Top/Characters/HBoxContainer4/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+value = 80.0
+rounded = true
+allow_greater = true
+show_percentage = false
+
+[node name="Bottom" type="HSplitContainer" parent="UI"]
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("4_ho0vs")
+split_offset = 51
+dragger_visibility = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="UI/Bottom"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 51
+theme_override_constants/margin_top = 24
+theme_override_constants/margin_right = 43
+theme_override_constants/margin_bottom = 30
+
+[node name="Attacks" type="GridContainer" parent="UI/Bottom/MarginContainer"]
+layout_mode = 2
+theme_override_constants/h_separation = 83
+theme_override_constants/v_separation = 62
+columns = 2
+
+[node name="Punch" type="Button" parent="UI/Bottom/MarginContainer/Attacks"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Punch"
+
+[node name="Blast" type="Button" parent="UI/Bottom/MarginContainer/Attacks"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Blast"
+
+[node name="Kick" type="Button" parent="UI/Bottom/MarginContainer/Attacks"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Kick"
+
+[node name="Hug" type="Button" parent="UI/Bottom/MarginContainer/Attacks"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Hug"
+
+[node name="MapContainer" type="SubViewportContainer" parent="UI/Bottom"]
+layout_mode = 2
 size_flags_horizontal = 3
 stretch = true
-metadata/_edit_use_anchors_ = true
 
-[node name="MapViewport" type="SubViewport" parent="MapContainer"]
+[node name="MapViewport" type="SubViewport" parent="UI/Bottom/MapContainer"]
 handle_input_locally = false
-size = Vector2i(210, 136)
+size = Vector2i(893, 262)
 render_target_update_mode = 4
 
-[node name="MapCam" type="Camera3D" parent="MapContainer/MapViewport"]
+[node name="MapCam" type="Camera3D" parent="UI/Bottom/MapContainer/MapViewport"]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 20, 0)
 projection = 1
 size = 15.0
-
-[node name="CombatFade" type="Panel" parent="."]
-visible = false
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.246875
-anchor_top = 0.0490741
-anchor_right = 0.759896
-anchor_bottom = 0.617593
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_yjr5w")
-metadata/_edit_use_anchors_ = true
-
-[node name="TextureRect" type="TextureRect" parent="."]
-z_index = 1
-layout_mode = 2
-offset_left = 10.0
-offset_top = 10.0
-offset_right = 1910.0
-offset_bottom = 1070.0
-texture = ExtResource("2_doqpw")
-stretch_mode = 5
-
-[node name="Attack" type="Button" parent="TextureRect"]
-layout_mode = 2
-offset_left = 471.0
-offset_top = 724.0
-offset_right = 869.0
-offset_bottom = 915.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-flat = true
-
-[node name="Defend" type="Button" parent="TextureRect"]
-layout_mode = 2
-offset_left = 1040.0
-offset_top = 724.0
-offset_right = 1434.0
-offset_bottom = 911.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-flat = true
 
 [connection signal="blocked" from="Player" to="." method="_on_player_blocked"]

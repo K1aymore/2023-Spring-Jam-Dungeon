@@ -1,5 +1,6 @@
-extends AnimatedSprite2D
+extends AnimatedSprite3D
 
+class_name Enemy
 
 var health : int
 
@@ -21,6 +22,6 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	pass
+	position = position.move_toward(Vector3(position.x, 1.9, position.z), delta * 5)
 
 

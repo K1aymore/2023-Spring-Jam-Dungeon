@@ -1,6 +1,6 @@
 extends Control
 
-var mode : Mode
+
 enum Mode {
 	MAIN,
 	OPTIONS,
@@ -15,19 +15,11 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if Input.is_action_just_pressed("escape"):
-		match mode:
-			Mode.MAIN:
-				setMode(Mode.HIDDEN)
-			Mode.OPTIONS:
-				setMode(Mode.MAIN)
-			Mode.HIDDEN:
-				setMode(Mode.MAIN)
+	pass
 
 
-func setMode(newMode : Mode):
+func setMode(mode : Mode):
 	hideAll()
-	mode = newMode
 	
 	match mode:
 		Mode.MAIN:
@@ -35,12 +27,9 @@ func setMode(newMode : Mode):
 		Mode.OPTIONS:
 			$Options.visible = true
 			$Back.visible = true
-		Mode.HIDDEN:
-			visible = false
 	
 	if mode != Mode.HIDDEN:
 		$ColorRect.visible = true
-		visible = true
 
 
 func hideAll():

@@ -1,4 +1,4 @@
-extends Control
+extends MarginContainer
 
 @onready var player : CharacterBody3D = $Player
 @onready var playerCam : Camera3D = get_node("%PlayerCam")
@@ -25,7 +25,7 @@ enum Turn {
 }
 
 var Enemy := preload("res://Scenes/enemy.tscn")
-var enemy : AnimatedSprite2D
+var enemy : Enemy
 
 
 # Called when the node enters the scene tree for the first time.
@@ -58,13 +58,8 @@ func _process(delta : float):
 	if state == State.EXPLORE && level.getTile(player.position).isCombatTile:
 		startCombat()
 	
-	if state == State.COMBAT:
-		enemy.position = enemy.position.move_toward(Vector2(960, 370), delta * 500)
-		$CombatFade.add_theme_stylebox_override("Panel", $CombatFade.get_theme_stylebox("Panel"))
-		if turn == Turn.PLAYER:
-			pass
-		if turn == Turn.ENEMY:
-			pass
+	
+
 
 
 func startCombat():
@@ -72,11 +67,10 @@ func startCombat():
 	turn = Turn.PLAYER
 	enemy = Enemy.instantiate()
 	
-	enemy.position = Vector2(960, 840)
-	enemy.scale = Vector2(4, 4)
+	enemy.position = player.position + Vector3.FORWARD.rotated(Vector3.UP, player.rotation.y)
 	
+	enemy.position.y = -2
 	add_child(enemy)
-	$CombatFade.visible = true
 
 
 
@@ -123,7 +117,7 @@ func instMove():
 	playerCam.position = player.position
 
 func smoothMove():
-	var moveSpeed = deltaG * get_parent().moveSpeed
+	var moveSpeed = clamp(deltaG * get_parent().moveSpeed, 0, 1)
 	playerCam.position = playerCam.position.lerp(player.position, moveSpeed)
 
 

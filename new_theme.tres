@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=14 format=3 uid="uid://dxbyj4ks8h1tj"]
+[gd_resource type="Theme" load_steps=16 format=3 uid="uid://dxbyj4ks8h1tj"]
 
 [ext_resource type="FontFile" uid="uid://b3newiqqv4yrf" path="res://Assets/font.ttf" id="1_wed6y"]
 
@@ -89,6 +89,30 @@ corner_radius_bottom_right = 3
 corner_radius_bottom_left = 3
 corner_detail = 5
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fbmhj"]
+content_margin_left = 2.0
+content_margin_top = 2.0
+content_margin_right = 2.0
+content_margin_bottom = 2.0
+bg_color = Color(0.1, 0.1, 0.1, 0.3)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+corner_detail = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yqfof"]
+content_margin_left = 2.0
+content_margin_top = 2.0
+content_margin_right = 2.0
+content_margin_bottom = 2.0
+bg_color = Color(0.690196, 0.584314, 0.372549, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+corner_detail = 6
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7yooy"]
 content_margin_left = 0.0
 content_margin_top = 0.0
@@ -163,6 +187,8 @@ CheckBox/styles/hover_pressed = SubResource("StyleBoxEmpty_o0dte")
 CheckBox/styles/normal = SubResource("StyleBoxEmpty_o0dte")
 CheckBox/styles/pressed = SubResource("StyleBoxEmpty_o0dte")
 Panel/styles/panel = SubResource("StyleBoxFlat_7mcyc")
+ProgressBar/styles/background = SubResource("StyleBoxFlat_fbmhj")
+ProgressBar/styles/fill = SubResource("StyleBoxFlat_yqfof")
 TabContainer/colors/drop_mark_color = Color(1, 1, 1, 1)
 TabContainer/colors/font_disabled_color = Color(0.875, 0.875, 0.875, 0.5)
 TabContainer/colors/font_outline_color = Color(1, 1, 1, 1)
