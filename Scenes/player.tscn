@@ -4,11 +4,11 @@
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_vii7j"]
 
-[node name="Player" type="CharacterBody3D"]
+[node name="Player" type="CharacterBody3D" groups=["player"]]
 motion_mode = 1
 script = ExtResource("1_14pra")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." groups=["player"]]
 shape = SubResource("BoxShape3D_vii7j")
 
 [node name="RayForward" type="RayCast3D" parent="."]

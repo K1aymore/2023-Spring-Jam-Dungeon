@@ -77,3 +77,5 @@ func checkBlocked():
 	if $RayForward.is_colliding() && $RayLeft.is_colliding() && \
 			$RayBack.is_colliding() && $RayRight.is_colliding():
 		emit_signal("blocked")
+
+

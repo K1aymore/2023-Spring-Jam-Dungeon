@@ -134,3 +134,21 @@ func tileExistsRec(pos : Vector3i, searchTile : Tile) -> bool:
 			return true
 	
 	return false
+
+
+
+func getTile(pos : Vector3) -> Tile:
+	pos.y = 0
+	pos = pos.snapped(Vector3i(4, 1, 4))
+	return getTileRec(pos, startTile)
+
+
+func getTileRec(pos : Vector3i, searchTile : Tile) -> Tile:
+	if searchTile.position.snapped(Vector3i(4, 1, 4)).is_equal_approx(pos):
+		return searchTile
+	
+	for t in searchTile.tiles:
+		if tileExistsRec(pos, t):
+			return getTileRec(pos, t)
+	
+	return null

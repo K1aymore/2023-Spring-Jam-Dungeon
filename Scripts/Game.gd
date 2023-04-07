@@ -24,6 +24,9 @@ enum Turn {
 	ENEMY
 }
 
+var Enemy := preload("res://Scenes/enemy.tscn")
+var enemy : Enemy
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -51,9 +54,23 @@ func _process(delta : float):
 	
 	turnCam()
 	moveCam()
+	
+	if state == State.EXPLORE && level.getTile(player.position).isCombatTile:
+		startCombat()
+	
+	
 
 
 
+func startCombat():
+	state = State.COMBAT
+	turn = Turn.PLAYER
+	enemy = Enemy.instantiate()
+	
+	enemy.position = player.position + Vector3.FORWARD.rotated(Vector3.UP, player.rotation.y)
+	
+	enemy.position.y = -2
+	add_child(enemy)
 
 
 

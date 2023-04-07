@@ -9,6 +9,8 @@ var tileOffsets : Array[Vector3i]
 var tileRotations : Array[float]
 var maxTiles := 0
 
+var isCombatTile := false
+
 enum Type {
 	END,
 	HALL,
@@ -31,6 +33,8 @@ var back = Vector3i(-2, 0, 0)
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	buildWalls()
+	if type != Type.START:
+		isCombatTile = true
 
 
 func buildWalls():
@@ -134,3 +138,5 @@ func nextRot() -> float:
 	var index := tiles.size()
 	
 	return self.rotation.y + tileRotations[index]
+
+
