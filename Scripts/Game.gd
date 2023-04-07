@@ -63,7 +63,7 @@ func _process(delta : float):
 	
 	if state == State.COMBAT:
 		if enemy != null:
-			enemy.position.y = lerp(enemy.position.y, 327.0, delta * 3)
+			enemy.position.y = lerp(enemy.position.y, 280.0, delta * 3)
 		combatFade.add_theme_stylebox_override("Panel", combatFade.get_theme_stylebox("Panel"))
 		if turn == Turn.PLAYER:
 			pass
@@ -90,10 +90,10 @@ func startCombat():
 	turn = Turn.PLAYER
 	enemy = Enemy.instantiate()
 	
-	enemy.position = Vector2(765, 840)
-	enemy.scale = Vector2(3.7, 3.7)
+	enemy.position = Vector2(370, 840)
+	enemy.z_index = 1
 	
-	add_child(enemy)
+	%CombatViewport.add_child(enemy)
 	combatFade.visible = true
 
 

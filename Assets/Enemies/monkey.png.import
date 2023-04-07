@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://x1ye2motjndq"
-path="res://.godot/imported/Grabika.png-e5a638d28ea2465ee81f8b97070d5f5c.ctex"
+uid="uid://bkf6am0nm3qhw"
+path="res://.godot/imported/monkey.png-e90debe37aaf8a2ef18194a8e0a03d94.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Grabika.png"
-dest_files=["res://.godot/imported/Grabika.png-e5a638d28ea2465ee81f8b97070d5f5c.ctex"]
+source_file="res://Assets/Enemies/monkey.png"
+dest_files=["res://.godot/imported/monkey.png-e90debe37aaf8a2ef18194a8e0a03d94.ctex"]
 
 [params]
 

@@ -18,6 +18,7 @@ theme = ExtResource("1_q166g")
 script = ExtResource("1_ipsc5")
 
 [node name="ColorRect" type="ColorRect" parent="."]
+z_index = -10
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

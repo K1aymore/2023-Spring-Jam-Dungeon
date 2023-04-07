@@ -1,0 +1,67 @@
+[gd_resource type="SpriteFrames" load_steps=10 format=3 uid="uid://c1nuw2yyo3dh6"]
+
+[ext_resource type="Texture2D" uid="uid://cw6b6cqkb0xxo" path="res://Assets/Enemies/mantistaur.png" id="1_hxo48"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lj4ha"]
+atlas = ExtResource("1_hxo48")
+region = Rect2(0, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2gpyx"]
+atlas = ExtResource("1_hxo48")
+region = Rect2(192, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q7e7i"]
+atlas = ExtResource("1_hxo48")
+region = Rect2(384, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pe6bl"]
+atlas = ExtResource("1_hxo48")
+region = Rect2(576, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hsakb"]
+atlas = ExtResource("1_hxo48")
+region = Rect2(768, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u1oiw"]
+atlas = ExtResource("1_hxo48")
+region = Rect2(960, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jpcrx"]
+atlas = ExtResource("1_hxo48")
+region = Rect2(1152, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m3f74"]
+atlas = ExtResource("1_hxo48")
+region = Rect2(1344, 0, 192, 192)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lj4ha")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2gpyx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q7e7i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pe6bl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hsakb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u1oiw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jpcrx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m3f74")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]

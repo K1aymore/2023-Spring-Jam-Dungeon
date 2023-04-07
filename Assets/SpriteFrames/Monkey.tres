@@ -1,0 +1,67 @@
+[gd_resource type="SpriteFrames" load_steps=10 format=3 uid="uid://ii06rwfuh12k"]
+
+[ext_resource type="Texture2D" uid="uid://bkf6am0nm3qhw" path="res://Assets/Enemies/monkey.png" id="1_40f4g"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_33r1e"]
+atlas = ExtResource("1_40f4g")
+region = Rect2(0, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ovc05"]
+atlas = ExtResource("1_40f4g")
+region = Rect2(96, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eya1l"]
+atlas = ExtResource("1_40f4g")
+region = Rect2(192, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_da2ei"]
+atlas = ExtResource("1_40f4g")
+region = Rect2(288, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wioja"]
+atlas = ExtResource("1_40f4g")
+region = Rect2(384, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i1pt0"]
+atlas = ExtResource("1_40f4g")
+region = Rect2(480, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sqhw4"]
+atlas = ExtResource("1_40f4g")
+region = Rect2(576, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cbmxu"]
+atlas = ExtResource("1_40f4g")
+region = Rect2(672, 0, 96, 96)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_33r1e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ovc05")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eya1l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_da2ei")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wioja")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i1pt0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sqhw4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cbmxu")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]

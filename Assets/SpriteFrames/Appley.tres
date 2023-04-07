@@ -1,0 +1,60 @@
+[gd_resource type="SpriteFrames" load_steps=9 format=3 uid="uid://b235lhu087l0l"]
+
+[ext_resource type="Texture2D" uid="uid://cbqqwsmncxpmn" path="res://Assets/Enemies/appley.png" id="1_h62ts"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pfgnh"]
+atlas = ExtResource("1_h62ts")
+region = Rect2(0, 0, 96, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ad0ie"]
+atlas = ExtResource("1_h62ts")
+region = Rect2(96, 0, 96, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gen6v"]
+atlas = ExtResource("1_h62ts")
+region = Rect2(192, 0, 96, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fs2ni"]
+atlas = ExtResource("1_h62ts")
+region = Rect2(288, 0, 96, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_runmx"]
+atlas = ExtResource("1_h62ts")
+region = Rect2(384, 0, 96, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bbmoo"]
+atlas = ExtResource("1_h62ts")
+region = Rect2(480, 0, 96, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_btunq"]
+atlas = ExtResource("1_h62ts")
+region = Rect2(576, 0, 96, 192)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pfgnh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ad0ie")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gen6v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fs2ni")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_runmx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bbmoo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_btunq")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
