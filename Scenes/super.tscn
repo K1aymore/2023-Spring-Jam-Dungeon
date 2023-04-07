@@ -30,5 +30,5 @@ color = Color(0.290196, 0.262745, 0.219608, 1)
 layout_mode = 1
 
 [node name="Menu" parent="." instance=ExtResource("7_dx2iq")]
-visible = false
+z_index = 5
 layout_mode = 1
