@@ -18,12 +18,6 @@ const DEBUG = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	var floorImage = Image.load_from_file("Assets/floor.png")
-	$Floor.texture = ImageTexture.create_from_image(floorImage)
-	
-	var roofImage = Image.load_from_file("Assets/roof.png")
-	$Roof.texture = ImageTexture.create_from_image(roofImage)
-	
 	
 	startTile.setType(Tile.Type.START)
 	add_child(startTile)
