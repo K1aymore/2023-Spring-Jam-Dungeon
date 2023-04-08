@@ -30,15 +30,15 @@ func _ready():
 			damage = 5
 			sprite.sprite_frames = load("res://Assets/SpriteFrames/Grabika.tres")
 		Mob.APPLEY:
-			health = 20
-			damage = 3
+			health = 15
+			damage = 2
 			sprite.sprite_frames = load("res://Assets/SpriteFrames/Appley.tres")
 		Mob.MANTISTAUR:
-			health = 6
+			health = 8
 			damage = 8
 			sprite.sprite_frames = load("res://Assets/SpriteFrames/Mantistaur.tres")
 		Mob.MONKEY:
-			health = 8
+			health = 9
 			damage = 6
 			sprite.sprite_frames = load("res://Assets/SpriteFrames/Monkey.tres")
 	

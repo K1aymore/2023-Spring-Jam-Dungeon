@@ -74,5 +74,6 @@ func _on_back_pressed():
 	setMode(Mode.MAIN)
 
 
-func _on_music_volume_value_changed(value):
-	$"../Music".volume_db = value
+
+func _on_vol_slider_value_changed(value):
+	AudioServer.set_bus_volume_db(0, value)

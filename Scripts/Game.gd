@@ -46,6 +46,11 @@ func _ready():
 
 
 func restart():
+	$PlayerAttack.stop()
+	$EnemyAttack.stop()
+	$Defend.stop()
+	$EnemyDeath.stop()
+	
 	newLevel()
 	startExplore()
 	
@@ -146,16 +151,34 @@ func playerAttack(damage : int):
 	if turn != Turn.PLAYER || state != State.COMBAT || enemy == null:
 		return
 	
-	damage += randi_range(0, 3)
+	$PlayerAttack.play()
+	isDefending = false
 	
+	damage += randi_range(0, 3)
 	enemy.health -= damage
 	turn = Turn.ENEMY
+	
 	$TurnDelay.start()
 	%CombatViewport.numberPopup(damage, false)
 
 
+func playerDefend():
+	if turn != Turn.PLAYER || state != State.COMBAT || enemy == null:
+		return
+	
+	isDefending = true
+	turn = Turn.ENEMY
+	$TurnDelay.start()
+
 
 func enemyAttack():
+	if isDefending:
+		$Defend.play()
+		turn = Turn.DELAY
+		$TurnDelay.start()
+		return
+	
+	$EnemyAttack.play()
 	var hasAttacked = false
 	
 	for i in characters:
@@ -174,6 +197,7 @@ func enemyAttack():
 
 
 func enemyKilled():
+	$EnemyDeath.play()
 	startExplore()
 	enemiesKilled += 1
 	
@@ -240,6 +264,9 @@ func _on_attack_pressed():
 	playerAttack(4)
 
 
+func _on_defend_button_pressed():
+	playerDefend()
+
 
 
 func lose():
@@ -250,3 +277,5 @@ func lose():
 func win():
 	get_tree().paused = true
 	($"../Anim" as AnimationPlayer).play("win")
+
+
