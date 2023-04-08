@@ -1,8 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://30ej6anya2ky"]
+[gd_scene load_steps=5 format=3 uid="uid://30ej6anya2ky"]
 
 [ext_resource type="Theme" uid="uid://dxbyj4ks8h1tj" path="res://new_theme.tres" id="1_02jwx"]
 [ext_resource type="Script" path="res://Scripts/character.gd" id="2_msonx"]
-[ext_resource type="SpriteFrames" uid="uid://o2nlrer27fdj" path="res://Assets/Portraits/flower.tres" id="3_eb7ab"]
 
 [sub_resource type="Gradient" id="Gradient_23qo8"]
 offsets = PackedFloat32Array(0.520362)
@@ -29,7 +28,6 @@ size_flags_vertical = 4
 
 [node name="AnimSprite" type="AnimatedSprite2D" parent="Portrait"]
 position = Vector2(48, 48)
-sprite_frames = ExtResource("3_eb7ab")
 autoplay = "default"
 
 [node name="Dead" type="TextureRect" parent="Portrait"]

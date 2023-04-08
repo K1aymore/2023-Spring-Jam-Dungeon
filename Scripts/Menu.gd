@@ -73,3 +73,7 @@ func _on_smooth_movement_toggled(button_pressed):
 
 func _on_back_pressed():
 	setMode(Mode.MAIN)
+
+
+func _on_music_volume_value_changed(value):
+	$"../Music".volume_db = value

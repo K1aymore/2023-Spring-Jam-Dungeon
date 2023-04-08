@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://rnc4uk4rths3"]
+[gd_scene load_steps=22 format=3 uid="uid://rnc4uk4rths3"]
 
 [ext_resource type="Script" path="res://Scripts/Game.gd" id="1_j0cq4"]
 [ext_resource type="Texture2D" uid="uid://cy4uu4u6ef0fr" path="res://Assets/menu1.png" id="3_0b0sn"]
@@ -9,6 +9,7 @@
 [ext_resource type="Theme" uid="uid://dxbyj4ks8h1tj" path="res://new_theme.tres" id="6_bo8lf"]
 [ext_resource type="SpriteFrames" uid="uid://cmgpvjl5xpv4b" path="res://Assets/Portraits/maskedRider.tres" id="7_rm7ie"]
 [ext_resource type="SpriteFrames" uid="uid://o2nlrer27fdj" path="res://Assets/Portraits/flower.tres" id="8_xov3g"]
+[ext_resource type="SpriteFrames" uid="uid://bcoq4wekyq2pc" path="res://Assets/Portraits/dominator.tres" id="9_g3xea"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hvxto"]
 
@@ -298,12 +299,13 @@ layout_mode = 2
 size_flags_horizontal = 1
 size_flags_vertical = 3
 guyName = "Silli"
+frames = ExtResource("9_g3xea")
 
 [node name="Character4" parent="Party/NinePatchRect/MarginContainer/Characters" instance=ExtResource("5_2foi4")]
 layout_mode = 2
 size_flags_horizontal = 1
 size_flags_vertical = 3
-guyName = "Nilli"
+guyName = "Quilli"
 
 [node name="EnemyStats" type="VBoxContainer" parent="."]
 layout_mode = 1

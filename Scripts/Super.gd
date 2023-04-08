@@ -9,6 +9,8 @@ var moveSpeed := 10
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$Menu.setMode($Menu.Mode.MAIN)
+	$Game.restart()
+	get_tree().paused = false
 
 
 func _process(delta):
@@ -17,3 +19,4 @@ func _process(delta):
 
 func play():
 	$Menu.setMode($Menu.Mode.HIDDEN)
+

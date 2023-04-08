@@ -72,10 +72,10 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_left = 700
-theme_override_constants/margin_top = 450
-theme_override_constants/margin_right = 700
-theme_override_constants/margin_bottom = 450
+theme_override_constants/margin_left = 669
+theme_override_constants/margin_top = 387
+theme_override_constants/margin_right = 704
+theme_override_constants/margin_bottom = 391
 
 [node name="Options" type="Panel" parent="Options"]
 layout_mode = 2
@@ -110,6 +110,17 @@ size_flags_vertical = 0
 button_pressed = true
 text = "Smooth Turning"
 
+[node name="MusicVolLabel" type="Label" parent="Options/Options/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "Music Volume:"
+
+[node name="MusicVolSlider" type="HSlider" parent="Options/Options/VBoxContainer"]
+layout_mode = 2
+min_value = -50.0
+max_value = 0.0
+rounded = true
+
 [node name="Back" type="Button" parent="."]
 visible = false
 layout_mode = 1
@@ -128,4 +139,5 @@ metadata/_edit_use_anchors_ = true
 [connection signal="pressed" from="Main/VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]
 [connection signal="toggled" from="Options/Options/VBoxContainer/SmoothMovement" to="." method="_on_smooth_movement_toggled"]
 [connection signal="toggled" from="Options/Options/VBoxContainer/SmoothTurning" to="." method="_on_smooth_turning_toggled"]
+[connection signal="value_changed" from="Options/Options/VBoxContainer/MusicVolSlider" to="." method="_on_music_volume_value_changed"]
 [connection signal="pressed" from="Back" to="." method="_on_back_pressed"]

@@ -33,6 +33,7 @@ var character = preload("res://Scenes/character.tscn")
 var characters : Array[Character] = []
 
 var isDefending := false
+var enemiesKilled := 0
 
 
 # Called when the node enters the scene tree for the first time.
@@ -42,10 +43,19 @@ func _ready():
 	for guy in %Characters.get_children():
 		characters.append(guy)
 	
+
+
+func restart():
 	newLevel()
 	startExplore()
-
-
+	
+	for i in characters:
+		i.health = 15
+	
+	isDefending = false
+	enemiesKilled = 0
+	state = State.EXPLORE
+	turn = Turn.PLAYER
 
 
 func newLevel():
@@ -153,6 +163,9 @@ func enemyAttack():
 			i.health -= enemy.damage + randi_range(0, 3)
 			hasAttacked = true
 	
+	if characters[characters.size()-1].health <= 0:
+		lose()
+	
 	turn = Turn.DELAY
 	$TurnDelay.start()
 
@@ -161,6 +174,7 @@ func enemyAttack():
 
 func enemyKilled():
 	startExplore()
+	enemiesKilled += 1
 
 #	var hasHealed = false
 #	for i in range(characters.size()-1, -1, -1):
@@ -219,3 +233,10 @@ func _on_player_blocked():
 
 func _on_attack_pressed():
 	playerAttack(4)
+
+
+
+
+func lose():
+	get_tree().paused = true
+	$"../Lose".play()
