@@ -118,7 +118,7 @@ func startCombat():
 
 
 func switchTurn():
-	if enemy == null:
+	if enemy == null || enemy.health == 0:
 		turn = Turn.PLAYER
 		return
 	
@@ -161,9 +161,12 @@ func enemyAttack():
 
 func enemyKilled():
 	startExplore()
-	
-	for i in characters:
-		i.health += randi_range(4, 5)
+
+#	var hasHealed = false
+#	for i in range(characters.size()-1, -1, -1):
+#		if characters[i].health < 15 && !hasHealed:
+#			characters[i].health += randi_range(5, 7)
+#			hasHealed = true
 
 
 
