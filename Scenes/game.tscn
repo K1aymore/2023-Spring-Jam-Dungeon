@@ -335,6 +335,12 @@ metadata/_edit_use_anchors_ = true
 [node name="TurnDelay" type="Timer" parent="."]
 wait_time = 0.3
 
+[node name="PlayerAttack" type="AudioStreamPlayer" parent="."]
+
+[node name="EnemyAttack" type="AudioStreamPlayer" parent="."]
+
+[node name="Death" type="AudioStreamPlayer" parent="."]
+
 [connection signal="pressed" from="TextureRect/Attack" to="." method="_on_attack_pressed"]
 [connection signal="blocked" from="Player" to="." method="_on_player_blocked"]
 [connection signal="timeout" from="TurnDelay" to="." method="switchTurn"]

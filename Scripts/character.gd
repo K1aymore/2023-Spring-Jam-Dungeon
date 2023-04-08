@@ -7,6 +7,7 @@ class_name Character
 
 var health = 15
 
+@onready var hpBar = %ProgressBar
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -17,7 +18,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	%ProgressBar.value = health
+	hpBar.value = health
 	
 	health = clamp(health, 0, 15)
 	
@@ -25,3 +26,6 @@ func _process(delta):
 		$Portrait/Dead.visible = true
 		$Portrait/AnimSprite.frame = 0
 		$Portrait/AnimSprite.stop()
+	else:
+		$Portrait/Dead.visible = false
+		$Portrait/AnimSprite.play()

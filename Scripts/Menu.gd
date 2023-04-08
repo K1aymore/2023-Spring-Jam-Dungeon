@@ -51,7 +51,6 @@ func hideAll():
 
 
 func _on_play_button_pressed():
-	setMode(Mode.HIDDEN)
 	get_parent().play()
 
 

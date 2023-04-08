@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://dhyfh26jjq4pv"]
+[gd_scene load_steps=12 format=3 uid="uid://dhyfh26jjq4pv"]
 
 [ext_resource type="Script" path="res://Scripts/Super.gd" id="1_ipsc5"]
 [ext_resource type="Theme" uid="uid://dxbyj4ks8h1tj" path="res://new_theme.tres" id="1_q166g"]
@@ -6,90 +6,12 @@
 [ext_resource type="AudioStream" uid="uid://500f0k1b51km" path="res://Assets/Sounds/music.wav" id="5_w3jr6"]
 [ext_resource type="PackedScene" uid="uid://b3scnladirb5x" path="res://Scenes/menu.tscn" id="7_dx2iq"]
 
-[sub_resource type="Animation" id="Animation_oqg2y"]
-resource_name = "lose"
-length = 6.0
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("LoseAnim/Control/TextureRect:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(1, 4.6, 6),
-"transitions": PackedFloat32Array(0.466517, 2.29739, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("LoseAnim/Control/CenterContainer/Label:theme_override_colors/font_outline_color")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(1, 1.0001, 4.6, 6),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [Color(0.254902, 0.223529, 0.172549, 0), Color(0.25098, 0.219608, 0.168627, 0), Color(0.254902, 0.223529, 0.172549, 1), Color(0.254902, 0.223529, 0.172549, 0)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("LoseAnim/Control/CenterContainer/Label:theme_override_colors/font_color")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(1, 4.6, 6),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Color(0.921569, 0.737255, 0.454902, 0), Color(0.921569, 0.737255, 0.454902, 1), Color(0.921569, 0.737255, 0.454902, 0)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("LoseAnim/Control/CenterContainer/Label:theme_override_colors/font_shadow_color")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(1, 4.6, 6),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
-}
-tracks/4/type = "method"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath(".")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(4.6),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"_ready"
-}]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("LoseAnim/Control:visible")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0, 5.8, 6),
-"transitions": PackedFloat32Array(1, 1, 0.840896),
-"update": 1,
-"values": [true, true, false]
-}
-
 [sub_resource type="Animation" id="Animation_62rb1"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("LoseAnim/Control/TextureRect:modulate")
+tracks/0/path = NodePath("Anim/Control/TextureRect:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -101,7 +23,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("LoseAnim/Control/CenterContainer/Label:theme_override_colors/font_outline_color")
+tracks/1/path = NodePath("Anim/Control/CenterContainer/Label:theme_override_colors/font_outline_color")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -113,7 +35,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("LoseAnim/Control/CenterContainer/Label:theme_override_colors/font_color")
+tracks/2/path = NodePath("Anim/Control/CenterContainer/Label:theme_override_colors/font_color")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -125,7 +47,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("LoseAnim/Control/CenterContainer/Label:theme_override_colors/font_shadow_color")
+tracks/3/path = NodePath("Anim/Control/CenterContainer/Label:theme_override_colors/font_shadow_color")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -137,7 +59,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("LoseAnim/Control:visible")
+tracks/4/path = NodePath("Anim/Control:visible")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -146,11 +68,204 @@ tracks/4/keys = {
 "update": 1,
 "values": [false]
 }
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Anim/Control/CenterContainer/Label2:theme_override_colors/font_color")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.921569, 0.737255, 0.454902, 0)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Anim/Control/CenterContainer/Label2:theme_override_colors/font_shadow_color")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 0)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Anim/Control/CenterContainer/Label2:theme_override_colors/font_outline_color")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.254902, 0.223529, 0.172549, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_oqg2y"]
+resource_name = "lose"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Anim/Control/TextureRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3.6, 5),
+"transitions": PackedFloat32Array(0.466517, 2.29739, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Anim/Control/CenterContainer/Label:theme_override_colors/font_outline_color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 3.6, 5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(0.25098, 0.219608, 0.168627, 0), Color(0.254902, 0.223529, 0.172549, 1), Color(0.254902, 0.223529, 0.172549, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Anim/Control/CenterContainer/Label:theme_override_colors/font_color")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 3.6, 5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(0.921569, 0.737255, 0.454902, 0), Color(0.921569, 0.737255, 0.454902, 1), Color(0.921569, 0.737255, 0.454902, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Anim/Control/CenterContainer/Label:theme_override_colors/font_shadow_color")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 3.6, 5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Anim/Control:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 4.8, 5),
+"transitions": PackedFloat32Array(1, 1, 0.840896),
+"update": 1,
+"values": [true, true, false]
+}
+tracks/5/type = "method"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath(".")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(3.6),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"win"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_sbob2"]
+resource_name = "lose"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Anim/Control/TextureRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3.6, 5),
+"transitions": PackedFloat32Array(0.466517, 2.29739, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Anim/Control:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 4.8, 5),
+"transitions": PackedFloat32Array(1, 1, 0.840896),
+"update": 1,
+"values": [true, true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Anim/Control/CenterContainer/Label2:theme_override_colors/font_color")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 3.6, 5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(0.921569, 0.737255, 0.454902, 0), Color(0.921569, 0.737255, 0.454902, 1), Color(0.921569, 0.737255, 0.454902, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Anim/Control/CenterContainer/Label2:theme_override_colors/font_shadow_color")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 3.6, 5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Anim/Control/CenterContainer/Label2:theme_override_colors/font_outline_color")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 3.6, 5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(0.254902, 0.223529, 0.172549, 0), Color(0.254902, 0.223529, 0.172549, 1), Color(0.254902, 0.223529, 0.172549, 0)]
+}
+tracks/5/type = "method"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath(".")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(3.6),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"_ready"
+}]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_r2y0b"]
 _data = {
 "RESET": SubResource("Animation_62rb1"),
-"lose": SubResource("Animation_oqg2y")
+"lose": SubResource("Animation_sbob2"),
+"win": SubResource("Animation_oqg2y")
 }
 
 [sub_resource type="Gradient" id="Gradient_25cv0"]
@@ -182,12 +297,12 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.290196, 0.262745, 0.219608, 1)
 
-[node name="LoseAnim" type="AnimationPlayer" parent="."]
+[node name="Anim" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_r2y0b")
 }
 
-[node name="Control" type="Control" parent="LoseAnim"]
+[node name="Control" type="Control" parent="Anim"]
 visible = false
 z_index = 10
 layout_mode = 3
@@ -199,7 +314,7 @@ grow_vertical = 2
 mouse_filter = 1
 metadata/_edit_group_ = true
 
-[node name="TextureRect" type="TextureRect" parent="LoseAnim/Control"]
+[node name="TextureRect" type="TextureRect" parent="Anim/Control"]
 modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = 15
@@ -209,7 +324,7 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("GradientTexture2D_k7c7u")
 
-[node name="CenterContainer" type="CenterContainer" parent="LoseAnim/Control"]
+[node name="CenterContainer" type="CenterContainer" parent="Anim/Control"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -217,7 +332,15 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Label" type="Label" parent="LoseAnim/Control/CenterContainer"]
+[node name="Label" type="Label" parent="Anim/Control/CenterContainer"]
+layout_mode = 2
+theme = ExtResource("1_q166g")
+theme_override_colors/font_color = Color(0.921569, 0.737255, 0.454902, 0)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0)
+theme_override_colors/font_outline_color = Color(0.254902, 0.223529, 0.172549, 0)
+text = "You Found The Stairs Down"
+
+[node name="Label2" type="Label" parent="Anim/Control/CenterContainer"]
 layout_mode = 2
 theme = ExtResource("1_q166g")
 theme_override_colors/font_color = Color(0.921569, 0.737255, 0.454902, 0)

@@ -19,4 +19,9 @@ func _process(delta):
 
 func play():
 	$Menu.setMode($Menu.Mode.HIDDEN)
+	get_tree().paused = false
 
+
+func win():
+	$Game.restart()
+	play()

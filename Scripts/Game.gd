@@ -95,7 +95,7 @@ func _process(delta : float):
 		if turn == Turn.ENEMY:
 			pass
 		
-		if enemy.health < 0:
+		if enemy != null && enemy.health < 0:
 			curTile.isCombatTile = false
 			enemy.scale = enemy.scale.move_toward(Vector2.ZERO, delta * 10)
 			if enemy.scale.x < 0.5:
@@ -161,6 +161,7 @@ func enemyAttack():
 	for i in characters:
 		if !hasAttacked && i.health > 0:
 			i.health -= enemy.damage + randi_range(0, 3)
+			i.hpBar.value = i.health
 			hasAttacked = true
 	
 	if characters[characters.size()-1].health <= 0:
@@ -175,7 +176,11 @@ func enemyAttack():
 func enemyKilled():
 	startExplore()
 	enemiesKilled += 1
-
+	
+	var rand = randi_range(0, 0)
+	
+	if enemiesKilled >= 3 && rand == 0:
+		win()
 #	var hasHealed = false
 #	for i in range(characters.size()-1, -1, -1):
 #		if characters[i].health < 15 && !hasHealed:
@@ -239,4 +244,9 @@ func _on_attack_pressed():
 
 func lose():
 	get_tree().paused = true
-	$"../Lose".play()
+	($"../Anim" as AnimationPlayer).play("lose")
+
+
+func win():
+	get_tree().paused = true
+	($"../Anim" as AnimationPlayer).play("win")
