@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://b3scnladirb5x"]
+[gd_scene load_steps=4 format=3 uid="uid://b3scnladirb5x"]
 
 [ext_resource type="Script" path="res://Scripts/Menu.gd" id="1_q2j1x"]
 [ext_resource type="Theme" uid="uid://dxbyj4ks8h1tj" path="res://new_theme.tres" id="2_4ncmn"]
+[ext_resource type="Texture2D" uid="uid://b6w7jkydwebcx" path="res://Assets/Splash.png" id="3_te526"]
 
 [node name="Menu" type="Control"]
 process_mode = 3
@@ -14,15 +15,14 @@ grow_vertical = 2
 theme = ExtResource("2_4ncmn")
 script = ExtResource("1_q2j1x")
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0, 0, 0, 0.858824)
-metadata/_edit_lock_ = true
+texture = ExtResource("3_te526")
 
 [node name="Main" type="Control" parent="."]
 layout_mode = 1
@@ -35,19 +35,16 @@ grow_vertical = 2
 [node name="VBoxContainer" type="VBoxContainer" parent="Main"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.5
-anchor_top = 0.498
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -113.0
-offset_top = -173.84
-offset_right = 128.0
-offset_bottom = 193.0
+anchor_left = 0.403646
+anchor_top = 0.581481
+anchor_right = 0.554167
+anchor_bottom = 0.949074
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 0
 size_flags_vertical = 4
 metadata/_edit_group_ = true
+metadata/_edit_use_anchors_ = true
 
 [node name="PlayButton" type="Button" parent="Main/VBoxContainer"]
 layout_mode = 2

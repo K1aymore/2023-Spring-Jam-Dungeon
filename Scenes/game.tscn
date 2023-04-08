@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://c1vdm2mirld6e"]
+[gd_scene load_steps=26 format=3 uid="uid://c1vdm2mirld6e"]
 
 [ext_resource type="Script" path="res://Scripts/Game.gd" id="1_j0cq4"]
 [ext_resource type="Texture2D" uid="uid://cy4uu4u6ef0fr" path="res://Assets/menu1.png" id="3_0b0sn"]
@@ -33,6 +33,60 @@ height = 100
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yjr5w"]
 bg_color = Color(0, 0, 0, 0.819608)
+
+[sub_resource type="Animation" id="Animation_nk6pl"]
+resource_name = "startCombat"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Game/NinePatchRect/MarginContainer/CombatFade:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_ei1xj"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Game/NinePatchRect/MarginContainer/CombatFade:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_jyhvl"]
+resource_name = "endCombat"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Game/NinePatchRect/MarginContainer/CombatFade:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5qxm1"]
+_data = {
+"RESET": SubResource("Animation_ei1xj"),
+"endCombat": SubResource("Animation_jyhvl"),
+"startCombat": SubResource("Animation_nk6pl")
+}
 
 [node name="Game" type="Control"]
 process_mode = 1
@@ -161,7 +215,7 @@ region_rect = Rect2(46, 6.5, 50, 94)
 
 [node name="CombatFade" type="Panel" parent="Game/NinePatchRect/MarginContainer"]
 unique_name_in_owner = true
-visible = false
+modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_yjr5w")
 
@@ -240,9 +294,9 @@ size = 15.0
 
 [node name="Party" type="Control" parent="."]
 layout_mode = 1
-anchor_left = 0.606771
+anchor_left = 0.603646
 anchor_top = 0.0296296
-anchor_right = 0.797917
+anchor_right = 0.806771
 anchor_bottom = 0.696296
 grow_horizontal = 2
 grow_vertical = 2
@@ -251,8 +305,9 @@ metadata/_edit_group_ = true
 
 [node name="NinePatchRect" type="NinePatchRect" parent="Party"]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
+anchors_preset = -1
+anchor_left = 0.025641
+anchor_right = 0.992308
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -273,8 +328,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_left = 37
-theme_override_constants/margin_top = 29
+theme_override_constants/margin_left = 44
+theme_override_constants/margin_top = 15
 theme_override_constants/margin_right = 26
 theme_override_constants/margin_bottom = 20
 
@@ -286,7 +341,7 @@ layout_mode = 2
 layout_mode = 2
 size_flags_horizontal = 1
 size_flags_vertical = 3
-guyName = "Monarch"
+guyName = "Monarc"
 frames = ExtResource("7_rm7ie")
 
 [node name="Character2" parent="Party/NinePatchRect/MarginContainer/Characters" instance=ExtResource("5_2foi4")]
@@ -358,6 +413,11 @@ stream = ExtResource("14_hib40")
 process_mode = 3
 stream = ExtResource("15_bk5id")
 autoplay = true
+
+[node name="Anim" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_5qxm1")
+}
 
 [connection signal="pressed" from="TextureRect/Attack" to="." method="_on_attack_pressed"]
 [connection signal="pressed" from="TextureRect/Defend" to="." method="_on_defend_button_pressed"]

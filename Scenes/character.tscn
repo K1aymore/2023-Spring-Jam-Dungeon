@@ -48,7 +48,7 @@ size_flags_horizontal = 3
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_constants/margin_left = 9
-theme_override_constants/margin_top = 14
+theme_override_constants/margin_top = 22
 
 [node name="Label" type="Label" parent="VBoxContainer/MarginContainer2"]
 unique_name_in_owner = true
@@ -61,7 +61,7 @@ autowrap_mode = 2
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_constants/margin_left = 13
-theme_override_constants/margin_top = 6
+theme_override_constants/margin_top = -1
 theme_override_constants/margin_right = 27
 theme_override_constants/margin_bottom = 33
 

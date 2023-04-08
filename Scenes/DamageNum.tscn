@@ -39,6 +39,7 @@ _data = {
 }
 
 [node name="DamageNum" type="Marker2D"]
+process_mode = 3
 script = ExtResource("1_c2i4m")
 
 [node name="Label" type="Label" parent="."]

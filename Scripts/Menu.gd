@@ -4,25 +4,18 @@ var mode : Mode
 enum Mode {
 	MAIN,
 	OPTIONS,
-	HIDDEN
+	HIDDEN,
 }
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	setMode(Mode.HIDDEN)
+	pass
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if Input.is_action_just_pressed("escape"):
-		match mode:
-			Mode.MAIN:
-				setMode(Mode.HIDDEN)
-			Mode.OPTIONS:
-				setMode(Mode.MAIN)
-			Mode.HIDDEN:
-				setMode(Mode.MAIN)
+	pass
 
 
 func setMode(newMode : Mode):
@@ -39,7 +32,7 @@ func setMode(newMode : Mode):
 			visible = false
 	
 	if mode != Mode.HIDDEN:
-		$ColorRect.visible = true
+		$TextureRect.visible = true
 		visible = true
 
 
@@ -51,7 +44,7 @@ func hideAll():
 
 
 func _on_play_button_pressed():
-	get_parent().play()
+	$"../Anim".play("menuHide")
 
 
 func _on_options_button_pressed():

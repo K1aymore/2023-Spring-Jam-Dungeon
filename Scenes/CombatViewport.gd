@@ -9,13 +9,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	for i in get_children():
-		if i is Marker2D:
-			i.position.y -= delta * 200
-			i.scale.x -= delta
-			i.scale.y -= delta
-			if i.scale.x < 0:
-				i.queue_free()
+	pass
 
 
 func numberPopup(damage : int, wasEnemy : bool):

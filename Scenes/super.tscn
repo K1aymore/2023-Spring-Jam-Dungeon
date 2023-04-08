@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://dhyfh26jjq4pv"]
+[gd_scene load_steps=13 format=3 uid="uid://dhyfh26jjq4pv"]
 
 [ext_resource type="Script" path="res://Scripts/Super.gd" id="1_ipsc5"]
 [ext_resource type="Theme" uid="uid://dxbyj4ks8h1tj" path="res://new_theme.tres" id="1_q166g"]
@@ -103,6 +103,30 @@ tracks/7/keys = {
 "update": 0,
 "values": [Color(0.254902, 0.223529, 0.172549, 0)]
 }
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Menu:visible")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Menu:modulate")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_sbob2"]
 resource_name = "lose"
@@ -178,13 +202,13 @@ tracks/5/keys = {
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
-"method": &"_ready"
+"method": &"lose"
 }]
 }
 
 [sub_resource type="Animation" id="Animation_oqg2y"]
 resource_name = "lose"
-length = 5.0
+length = 3.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -192,7 +216,7 @@ tracks/0/path = NodePath("Anim/Control/TextureRect:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 3.6, 5),
+"times": PackedFloat32Array(0, 2.1, 3.5),
 "transitions": PackedFloat32Array(0.466517, 2.29739, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
@@ -204,7 +228,7 @@ tracks/1/path = NodePath("Anim/Control/CenterContainer/Label:theme_override_colo
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 3.6, 5),
+"times": PackedFloat32Array(0, 2.1, 3.5),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Color(0.25098, 0.219608, 0.168627, 0), Color(0.254902, 0.223529, 0.172549, 1), Color(0.254902, 0.223529, 0.172549, 0)]
@@ -216,7 +240,7 @@ tracks/2/path = NodePath("Anim/Control/CenterContainer/Label:theme_override_colo
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 3.6, 5),
+"times": PackedFloat32Array(0, 2.1, 3.5),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Color(0.921569, 0.737255, 0.454902, 0), Color(0.921569, 0.737255, 0.454902, 1), Color(0.921569, 0.737255, 0.454902, 0)]
@@ -228,7 +252,7 @@ tracks/3/path = NodePath("Anim/Control/CenterContainer/Label:theme_override_colo
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 3.6, 5),
+"times": PackedFloat32Array(0, 2.1, 3.5),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
@@ -240,7 +264,7 @@ tracks/4/path = NodePath("Anim/Control:visible")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0, 4.8, 5),
+"times": PackedFloat32Array(0, 3.3, 3.5),
 "transitions": PackedFloat32Array(1, 1, 0.840896),
 "update": 1,
 "values": [true, true, false]
@@ -252,7 +276,7 @@ tracks/5/path = NodePath(".")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(3.6),
+"times": PackedFloat32Array(2.1),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
@@ -260,10 +284,96 @@ tracks/5/keys = {
 }]
 }
 
+[sub_resource type="Animation" id="Animation_82atd"]
+resource_name = "menuShow"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Menu:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Menu:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Menu")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0],
+"method": &"setMode"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_8o52s"]
+resource_name = "menuHide"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Menu:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Menu:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Menu")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [2],
+"method": &"setMode"
+}]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_r2y0b"]
 _data = {
 "RESET": SubResource("Animation_62rb1"),
 "lose": SubResource("Animation_sbob2"),
+"menuHide": SubResource("Animation_8o52s"),
+"menuShow": SubResource("Animation_82atd"),
 "win": SubResource("Animation_oqg2y")
 }
 
@@ -351,6 +461,5 @@ text = "You Died"
 layout_mode = 1
 
 [node name="Menu" parent="." instance=ExtResource("7_dx2iq")]
-visible = false
 z_index = 5
 layout_mode = 1

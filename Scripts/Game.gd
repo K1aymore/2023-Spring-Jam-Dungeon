@@ -40,7 +40,6 @@ var camShake := 0.0
 
 
 var dmgNumScene = preload("res://Scenes/DamageNum.tscn")
-var dmgNums : Array[Marker2D]
 
 
 # Called when the node enters the scene tree for the first time.
@@ -107,15 +106,7 @@ func _process(delta : float):
 			enemy.scale = enemy.scale.move_toward(Vector2.ZERO, delta * 10)
 			if enemy.scale.x < 0.5:
 				enemyKilled()
-	
-	for i in dmgNums:
-		if i == null:
-			continue
-		i.position.y -= delta * 200
-		i.scale.x -= delta
-		i.scale.y -= delta
-		if i.scale.x < 0:
-			i.queue_free()
+
 
 
 
@@ -123,10 +114,8 @@ func startExplore():
 	if enemy != null:
 		enemy.queue_free()
 	
-	dmgNums.clear()
-	
 	state = State.EXPLORE
-	combatFade.visible = false
+	$Anim.play("endCombat")
 	$EnemyStats.visible = false
 
 
@@ -138,7 +127,7 @@ func startCombat():
 	enemy.position = Vector2(370, 840)
 	
 	%CombatViewport.add_child(enemy)
-	combatFade.visible = true
+	$Anim.play("startCombat")
 	$EnemyStats/ProgressBar.max_value = enemy.health
 	$EnemyStats.visible = true
 
@@ -242,7 +231,6 @@ func numberPopup(damage : int, guyIndex : int):
 	num.global_position = characters[guyIndex].global_position
 	num.position += Vector2(100, 100)
 	
-	dmgNums.append(num)
 	add_child(num)
 
 
