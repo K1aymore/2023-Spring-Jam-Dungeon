@@ -1,10 +1,11 @@
-[gd_scene load_steps=18 format=3 uid="uid://rnc4uk4rths3"]
+[gd_scene load_steps=19 format=3 uid="uid://rnc4uk4rths3"]
 
 [ext_resource type="Script" path="res://Scripts/Game.gd" id="1_j0cq4"]
 [ext_resource type="Texture2D" uid="uid://cy4uu4u6ef0fr" path="res://Assets/menu1.png" id="3_0b0sn"]
 [ext_resource type="PackedScene" uid="uid://c3axriqimy1wf" path="res://Scenes/player.tscn" id="3_av2ii"]
 [ext_resource type="Texture2D" uid="uid://nyrua2xjb18e" path="res://Assets/menu1 copy.png" id="4_ma7ab"]
 [ext_resource type="PackedScene" uid="uid://30ej6anya2ky" path="res://Scenes/character.tscn" id="5_2foi4"]
+[ext_resource type="Script" path="res://Scenes/CombatViewport.gd" id="5_lktjr"]
 [ext_resource type="Theme" uid="uid://dxbyj4ks8h1tj" path="res://new_theme.tres" id="6_bo8lf"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hvxto"]
@@ -139,7 +140,7 @@ stretch = true
 [node name="GameViewport" type="SubViewport" parent="Game/NinePatchRect/MarginContainer/GameContainer"]
 unique_name_in_owner = true
 handle_input_locally = false
-size = Vector2i(712, 523)
+size = Vector2i(711, 522)
 render_target_update_mode = 4
 
 [node name="PlayerCam" type="Camera3D" parent="Game/NinePatchRect/MarginContainer/GameContainer/GameViewport"]
@@ -170,8 +171,9 @@ disable_3d = true
 transparent_bg = true
 handle_input_locally = false
 canvas_item_default_texture_filter = 0
-size = Vector2i(712, 523)
+size = Vector2i(711, 522)
 render_target_update_mode = 4
+script = ExtResource("5_lktjr")
 
 [node name="Map" type="Control" parent="."]
 layout_mode = 1
@@ -222,7 +224,7 @@ stretch = true
 
 [node name="MapViewport" type="SubViewport" parent="Map/NinePatchRect/MarginContainer/MapContainer"]
 handle_input_locally = false
-size = Vector2i(222, 134)
+size = Vector2i(221, 133)
 render_target_update_mode = 4
 
 [node name="MapCam" type="Camera3D" parent="Map/NinePatchRect/MarginContainer/MapContainer/MapViewport"]
@@ -272,27 +274,32 @@ theme_override_constants/margin_right = 26
 theme_override_constants/margin_bottom = 20
 
 [node name="Characters" type="VBoxContainer" parent="Party/NinePatchRect/MarginContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 
 [node name="Character" parent="Party/NinePatchRect/MarginContainer/Characters" instance=ExtResource("5_2foi4")]
 layout_mode = 2
 size_flags_horizontal = 1
 size_flags_vertical = 3
+guyName = "Billi"
 
 [node name="Character2" parent="Party/NinePatchRect/MarginContainer/Characters" instance=ExtResource("5_2foi4")]
 layout_mode = 2
 size_flags_horizontal = 1
 size_flags_vertical = 3
+guyName = "Chilli"
 
 [node name="Character3" parent="Party/NinePatchRect/MarginContainer/Characters" instance=ExtResource("5_2foi4")]
 layout_mode = 2
 size_flags_horizontal = 1
 size_flags_vertical = 3
+guyName = "Silli"
 
 [node name="Character4" parent="Party/NinePatchRect/MarginContainer/Characters" instance=ExtResource("5_2foi4")]
 layout_mode = 2
 size_flags_horizontal = 1
 size_flags_vertical = 3
+guyName = "Nilli"
 
 [node name="EnemyStats" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -320,7 +327,8 @@ show_percentage = false
 metadata/_edit_use_anchors_ = true
 
 [node name="TurnDelay" type="Timer" parent="."]
-wait_time = 0.5
+wait_time = 0.3
 
 [connection signal="pressed" from="TextureRect/Attack" to="." method="_on_attack_pressed"]
 [connection signal="blocked" from="Player" to="." method="_on_player_blocked"]
+[connection signal="timeout" from="TurnDelay" to="." method="switchTurn"]

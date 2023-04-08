@@ -42,6 +42,8 @@ func _ready():
 			damage = 6
 			sprite.sprite_frames = load("res://Assets/SpriteFrames/Monkey.tres")
 	
+	health += randi_range(0, 3)
+	damage += randi_range(0, 3)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

@@ -22,18 +22,29 @@ enum State {
 var turn : Turn
 enum Turn {
 	PLAYER,
-	ENEMY
+	ENEMY,
+	DELAY
 }
 
 var Enemy := preload("res://Scenes/enemy.tscn")
 var enemy : AnimatedSprite2D
 
+var character = preload("res://Scenes/character.tscn")
+var characters : Array[Character] = []
+
+var isDefending := false
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	await get_tree().root.ready
+	
+	for guy in %Characters.get_children():
+		characters.append(guy)
+	
 	newLevel()
 	startExplore()
+
 
 
 
@@ -57,15 +68,17 @@ func _process(delta : float):
 	turnCam()
 	moveCam()
 	
+	var curTile = level.getTile(player.position)
+	
 	if state == State.EXPLORE:
-		if level.getTile(player.position).isCombatTile:
+		curTile.explore()
+		if curTile.isCombatTile:
 			startCombat()
 	
 	if state == State.COMBAT:
 		if enemy != null:
 			enemy.position.y = lerp(enemy.position.y, 280.0, delta * 3)
 			$EnemyStats/ProgressBar.value = enemy.health
-		combatFade.add_theme_stylebox_override("Panel", combatFade.get_theme_stylebox("Panel"))
 		
 		if turn == Turn.PLAYER:
 			pass
@@ -73,10 +86,10 @@ func _process(delta : float):
 			pass
 		
 		if enemy.health < 0:
-			level.getTile(player.position).isCombatTile = false
+			curTile.isCombatTile = false
 			enemy.scale = enemy.scale.move_toward(Vector2.ZERO, delta * 10)
 			if enemy.scale.x < 0.5:
-				startExplore()
+				enemyKilled()
 
 
 
@@ -104,13 +117,53 @@ func startCombat():
 
 
 
+func switchTurn():
+	if enemy == null:
+		turn = Turn.PLAYER
+		return
+	
+	if turn == Turn.ENEMY:
+		turn = Turn.ENEMY
+		enemyAttack()
+	
+	elif turn == Turn.DELAY:
+		turn = Turn.PLAYER
+
+
+
+
 func playerAttack(damage : int):
 	if turn != Turn.PLAYER || state != State.COMBAT || enemy == null:
 		return
 	
+	damage += randi_range(0, 3)
+	
 	enemy.health -= damage
+	turn = Turn.ENEMY
+	$TurnDelay.start()
+	%CombatViewport.numberPopup(damage, false)
 
 
+
+func enemyAttack():
+	var hasAttacked = false
+	
+	for i in characters:
+		if !hasAttacked && i.health > 0:
+			i.health -= enemy.damage + randi_range(0, 3)
+			hasAttacked = true
+	
+	turn = Turn.DELAY
+	$TurnDelay.start()
+
+
+
+
+func enemyKilled():
+	startExplore()
+	
+	for i in characters:
+		i.health += randi_range(4, 5)
 
 
 

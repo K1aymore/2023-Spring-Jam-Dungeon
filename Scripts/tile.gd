@@ -10,6 +10,7 @@ var tileRotations : Array[float]
 var maxTiles := 0
 
 var isCombatTile := false
+var inFog := true
 
 enum Type {
 	END,
@@ -141,3 +142,13 @@ func nextRot() -> float:
 	return self.rotation.y + tileRotations[index]
 
 
+
+func explore():
+	clearFog()
+	for t in tiles:
+		t.clearFog()
+
+
+func clearFog():
+	for w in get_children():
+		w.clearFog()
