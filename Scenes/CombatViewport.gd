@@ -1,5 +1,6 @@
 extends SubViewport
 
+var dmgNumScene = preload("res://Scenes/DamageNum.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -9,8 +10,8 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	for i in get_children():
-		if i is Label:
-			i.position += delta * 20
+		if i is Marker2D:
+			i.position.y -= delta * 200
 			i.scale.x -= delta
 			i.scale.y -= delta
 			if i.scale.x < 0:
@@ -18,7 +19,8 @@ func _process(delta):
 
 
 func numberPopup(damage : int, wasEnemy : bool):
-	var num = Label.new()
-	num.text = str(damage)
-	num.position = Vector2(400, 300)
+	var num = dmgNumScene.instantiate()
+	num.num = str(damage)
+	num.position = Vector2(400, 200)
 	
+	add_child(num)

@@ -10,6 +10,7 @@ var moveSpeed := 10
 func _ready():
 	$Menu.setMode($Menu.Mode.MAIN)
 	$Game.restart()
+	$Game/Music.play()
 	get_tree().paused = false
 
 

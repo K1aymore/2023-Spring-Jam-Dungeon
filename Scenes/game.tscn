@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://c1vdm2mirld6e"]
+[gd_scene load_steps=22 format=3 uid="uid://c1vdm2mirld6e"]
 
 [ext_resource type="Script" path="res://Scripts/Game.gd" id="1_j0cq4"]
 [ext_resource type="Texture2D" uid="uid://cy4uu4u6ef0fr" path="res://Assets/menu1.png" id="3_0b0sn"]
@@ -13,6 +13,8 @@
 [ext_resource type="SpriteFrames" uid="uid://cb05pjwtwg3vj" path="res://Assets/Portraits/witch.tres" id="10_hvkvt"]
 [ext_resource type="AudioStream" uid="uid://c2kalimdx867s" path="res://Assets/Sounds/playerAttack.mp3" id="12_877mr"]
 [ext_resource type="AudioStream" uid="uid://bfpc5bqs3cp4k" path="res://Assets/Sounds/enemyAttack.mp3" id="12_qpglk"]
+[ext_resource type="AudioStream" uid="uid://8hexkah6tdw" path="res://Assets/Sounds/thump.mp3" id="14_hib40"]
+[ext_resource type="AudioStream" uid="uid://500f0k1b51km" path="res://Assets/Sounds/music.wav" id="15_bk5id"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hvxto"]
 
@@ -337,14 +339,25 @@ metadata/_edit_use_anchors_ = true
 wait_time = 0.4
 
 [node name="PlayerAttack" type="AudioStreamPlayer" parent="."]
+process_mode = 3
 stream = ExtResource("12_877mr")
 
 [node name="EnemyAttack" type="AudioStreamPlayer" parent="."]
+process_mode = 3
 stream = ExtResource("12_qpglk")
+volume_db = -1.0
 
 [node name="EnemyDeath" type="AudioStreamPlayer" parent="."]
+process_mode = 3
 
 [node name="Defend" type="AudioStreamPlayer" parent="."]
+process_mode = 3
+stream = ExtResource("14_hib40")
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+process_mode = 3
+stream = ExtResource("15_bk5id")
+autoplay = true
 
 [connection signal="pressed" from="TextureRect/Attack" to="." method="_on_attack_pressed"]
 [connection signal="pressed" from="TextureRect/Defend" to="." method="_on_defend_button_pressed"]

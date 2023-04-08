@@ -35,6 +35,13 @@ var characters : Array[Character] = []
 var isDefending := false
 var enemiesKilled := 0
 
+var camPos : Vector3
+var camShake := 0.0
+
+
+var dmgNumScene = preload("res://Scenes/DamageNum.tscn")
+var dmgNums : Array[Marker2D]
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -46,11 +53,6 @@ func _ready():
 
 
 func restart():
-	$PlayerAttack.stop()
-	$EnemyAttack.stop()
-	$Defend.stop()
-	$EnemyDeath.stop()
-	
 	newLevel()
 	startExplore()
 	
@@ -85,6 +87,11 @@ func _process(delta : float):
 	
 	var curTile = level.getTile(player.position)
 	
+	if camShake < 0:
+		var shakeOffset = Vector3(camShake * 200, 0, 0).rotated(Vector3.FORWARD, playerCam.rotation.y)
+		playerCam.position = camPos + shakeOffset
+		camShake -= delta
+	
 	if state == State.EXPLORE:
 		curTile.explore()
 		if curTile.isCombatTile:
@@ -95,22 +102,28 @@ func _process(delta : float):
 			enemy.position.y = lerp(enemy.position.y, 280.0, delta * 3)
 			$EnemyStats/ProgressBar.value = enemy.health
 		
-		if turn == Turn.PLAYER:
-			pass
-		if turn == Turn.ENEMY:
-			pass
-		
-		if enemy != null && enemy.health < 0:
+		if enemy != null && enemy.health <= 0:
 			curTile.isCombatTile = false
 			enemy.scale = enemy.scale.move_toward(Vector2.ZERO, delta * 10)
 			if enemy.scale.x < 0.5:
 				enemyKilled()
+	
+	for i in dmgNums:
+		if i == null:
+			continue
+		i.position.y -= delta * 200
+		i.scale.x -= delta
+		i.scale.y -= delta
+		if i.scale.x < 0:
+			i.queue_free()
 
 
 
 func startExplore():
 	if enemy != null:
 		enemy.queue_free()
+	
+	dmgNums.clear()
 	
 	state = State.EXPLORE
 	combatFade.visible = false
@@ -123,7 +136,6 @@ func startCombat():
 	enemy = Enemy.instantiate()
 	
 	enemy.position = Vector2(370, 840)
-	enemy.z_index = 1
 	
 	%CombatViewport.add_child(enemy)
 	combatFade.visible = true
@@ -133,6 +145,7 @@ func startCombat():
 
 
 func switchTurn():
+	$TurnDelay.stop()
 	if enemy == null || enemy.health == 0:
 		turn = Turn.PLAYER
 		return
@@ -172,8 +185,10 @@ func playerDefend():
 
 
 func enemyAttack():
+	screenShake()
 	if isDefending:
 		$Defend.play()
+		numberPopup(0, 0)
 		turn = Turn.DELAY
 		$TurnDelay.start()
 		return
@@ -181,10 +196,12 @@ func enemyAttack():
 	$EnemyAttack.play()
 	var hasAttacked = false
 	
-	for i in characters:
-		if !hasAttacked && i.health > 0:
-			i.health -= enemy.damage + randi_range(0, 3)
-			i.hpBar.value = i.health
+	for i in characters.size():
+		if !hasAttacked && characters[i].health > 0:
+			var damage = enemy.damage + randi_range(0, 3)
+			characters[i].health -= damage
+			characters[i].hpBar.value = characters[i].health
+			numberPopup(damage, i)
 			hasAttacked = true
 	
 	if characters[characters.size()-1].health <= 0:
@@ -212,6 +229,21 @@ func enemyKilled():
 #			hasHealed = true
 
 
+
+func screenShake():
+	camPos = playerCam.position
+	camShake = 1
+
+
+
+func numberPopup(damage : int, guyIndex : int):
+	var num = dmgNumScene.instantiate()
+	num.num = str(damage)
+	num.global_position = characters[guyIndex].global_position
+	num.position += Vector2(100, 100)
+	
+	dmgNums.append(num)
+	add_child(num)
 
 
 func turnCam():
@@ -271,6 +303,7 @@ func _on_defend_button_pressed():
 
 func lose():
 	get_tree().paused = true
+	$Music.stop()
 	($"../Anim" as AnimationPlayer).play("lose")
 
 

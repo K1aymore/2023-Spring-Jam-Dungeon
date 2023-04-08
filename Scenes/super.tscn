@@ -1,9 +1,8 @@
-[gd_scene load_steps=12 format=3 uid="uid://dhyfh26jjq4pv"]
+[gd_scene load_steps=11 format=3 uid="uid://dhyfh26jjq4pv"]
 
 [ext_resource type="Script" path="res://Scripts/Super.gd" id="1_ipsc5"]
 [ext_resource type="Theme" uid="uid://dxbyj4ks8h1tj" path="res://new_theme.tres" id="1_q166g"]
 [ext_resource type="PackedScene" uid="uid://c1vdm2mirld6e" path="res://Scenes/game.tscn" id="2_djx07"]
-[ext_resource type="AudioStream" uid="uid://500f0k1b51km" path="res://Assets/Sounds/music.wav" id="5_w3jr6"]
 [ext_resource type="PackedScene" uid="uid://b3scnladirb5x" path="res://Scenes/menu.tscn" id="7_dx2iq"]
 
 [sub_resource type="Animation" id="Animation_62rb1"]
@@ -355,7 +354,3 @@ layout_mode = 1
 visible = false
 z_index = 5
 layout_mode = 1
-
-[node name="Music" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("5_w3jr6")
-autoplay = true
