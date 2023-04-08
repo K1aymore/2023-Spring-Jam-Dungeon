@@ -1,0 +1,53 @@
+[gd_resource type="SpriteFrames" load_steps=8 format=3 uid="uid://cb05pjwtwg3vj"]
+
+[ext_resource type="Texture2D" uid="uid://cflyeppxej4b6" path="res://Assets/Portraits/witch.png" id="1_ow52x"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dasxx"]
+atlas = ExtResource("1_ow52x")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_awsqg"]
+atlas = ExtResource("1_ow52x")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nwptd"]
+atlas = ExtResource("1_ow52x")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ihrma"]
+atlas = ExtResource("1_ow52x")
+region = Rect2(384, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d2euu"]
+atlas = ExtResource("1_ow52x")
+region = Rect2(512, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tmogq"]
+atlas = ExtResource("1_ow52x")
+region = Rect2(640, 0, 128, 128)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dasxx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_awsqg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nwptd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ihrma")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d2euu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tmogq")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}]

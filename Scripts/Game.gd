@@ -177,9 +177,9 @@ func enemyKilled():
 	startExplore()
 	enemiesKilled += 1
 	
-	var rand = randi_range(0, 0)
+	var rand = randi_range(0, 2)
 	
-	if enemiesKilled >= 3 && rand == 0:
+	if enemiesKilled >= 6 || (enemiesKilled >= 3 && rand == 0):
 		win()
 #	var hasHealed = false
 #	for i in range(characters.size()-1, -1, -1):
